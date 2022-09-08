@@ -27,6 +27,9 @@ public class Category {
     @Column(name = "name", nullable = false)
     private String name;
 
+    @Column(name = "sequence", nullable = false)
+    private Integer sequence;
+
     @Size(max = 1)
     @NotNull
     @Column(name = "type", nullable = false, length = 1)

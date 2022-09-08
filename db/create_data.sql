@@ -10,3 +10,7 @@ INSERT INTO month (id, name, number) VALUES (DEFAULT, 'september', 9);
 INSERT INTO month (id, name, number) VALUES (DEFAULT, 'oktoober', 10);
 INSERT INTO month (id, name, number) VALUES (DEFAULT, 'november', 11);
 INSERT INTO month (id, name, number) VALUES (DEFAULT, 'detsember', 12);
+
+
+INSERT INTO role (id, name) VALUES (DEFAULT, 'admin');
+INSERT INTO role (id, name) VALUES (DEFAULT, 'customer');

@@ -22,6 +22,9 @@ public class Subcategory {
     @Column(name = "name", nullable = false)
     private String name;
 
+    @Column(name = "sequence", nullable = false)
+    private Integer sequence;
+
     @Size(max = 1)
     @Column(name = "type", length = 1)
     private String type;
