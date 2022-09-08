@@ -33,13 +33,13 @@ public class LoginController {
     //  'role' saad kätte kasutades RoleService -> RoleRepository
     //  'role' saad otsida siis kas id '2', järgi, või siis name 'customer' järgi.
     //  nüüd kui 'role' on käes, siis tuleks see 'user'ile külge panna
-    //  Nüüd saab RoleService-RoleRepository kaudu uue useri lisada/salvestada
+    //  Nüüd saab RoleService->RoleRepository kaudu uue useri lisada/salvestada
     //  Seda 'user'it läheb sul veel vaja.
     //  Järgmise tegevusena tuleb LoginService alla luua meetod 'createCustomCategoryFromStandardTemplate(int month, int year, User user)'
     //  See meetod käivitatakse kohe, kui uus kasutaja 'user' on maha salvestatud. Esialgu võib seda meetodit kutsuda välja nii,
     //  et sisendid on koodi sisse kirjutatud 9 ja 2022
 
-    // TODO:  createCustomCategoryFromStandardTemplate(int month, int year, User user)
+    // TODO:  createCustomCategoriesFromStandardTemplate(int month, int year, User user)
     //  tee kõik vajalikud packaged ja struktuur, et paigutada ära kõik klassid
     //  StandardCategory, StandardCategoryRelation, StandardSubcategory
     //  Category, CategoryRelation, Subcategory
@@ -49,16 +49,16 @@ public class LoginController {
     //  Mäppige ära väljad 'name', 'sequence' ja 'type'
     //  'id' välja jaoks on tähtis mäppida ingore = true. Neid väärtusi me ei taha ise lisada/mäppida (peavad jääma 'null'iks).
     //  Need id-d tulevad ise hiljem kui kõik need read maha salvestame
-    //  lisage List versioon mapperist standardCategoriesToCategories
+    //  lisage List versioon mapperist standardCategoryRelationsToCategories
     //  Kasutage seda List mäpperit ning looge list 'categories'
-    //  Tehke üks uus meetod updateCategoryWithUser(List<Category> categories, User user)
+    //  Tehke üks uus meetod updateCategoriesWithUser(List<Category> categories, User user)
     //  Selle meetodid sees käige see list for tsükkliga läbi ja lisage igale category objektile see user külge
     //  Nüüd saate CategoryService->CategoryRepository kaudu need read maha salvestada
     //  Vihje: saveAll ;-)
 
     // TODO: peale seda tehke põhimõtteliselt sama asi ära aga 'standardCategoryRelations' to Subcategories
 
-    // TODO: tuleks veel mäppida standard_category_relation andmed mäppida category_relation tabeli andmete jaoks ära
+    // TODO: Nüüd tuleks veel lisada andmed category_relation tabeli jaoks
     //  Aga see on teie jaoks veitsa liiga keeruline teema, seega ma aitan teil selle teil ise ära progeda :)
 
 }
