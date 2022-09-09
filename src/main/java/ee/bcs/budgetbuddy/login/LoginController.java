@@ -37,8 +37,8 @@ public class LoginController {
     // TODO:  createCustomCategoriesFromStandardTemplate(int month, int year, User user)
 
     //  tee kõik vajalikud packaged ja struktuur, et paigutada ära kõik klassid
-    //  StandardCategory, StandardCategoryRelation, StandardSubcategory
-    //  Category, CategoryRelation, Subcategory
+    //  standardCategory: StandardCategory, StandardCategoryRelation, StandardSubcategory
+    //  category: Category, CategoryRelation, Subcategory
 
     //  leia StandardCategoryRelationService->StandardCategoryRelationRepository kaudu andmebaasist kõik tabeli standard_category_relation read
     //  tee neist List<StandardCategoryRelation> 'standardCategoryRelations' objektide list
