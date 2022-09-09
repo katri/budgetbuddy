@@ -11,9 +11,12 @@ INSERT INTO month (id, name, number) VALUES (DEFAULT, 'oktoober', 10);
 INSERT INTO month (id, name, number) VALUES (DEFAULT, 'november', 11);
 INSERT INTO month (id, name, number) VALUES (DEFAULT, 'detsember', 12);
 
-INSERT INTO user (id, user_name, password, email) VALUES (DEFAULT, 'liisi', 'student123', 'liisi@budgebuddy.com');
-INSERT INTO user (id, user_name, password, email) VALUES (DEFAULT, 'maris', 'student123', 'maris@budgetbuddy.com');
-INSERT INTO user (id, user_name, password, email) VALUES (DEFAULT, 'katri', 'student123', 'katri@budgetbuddy.com');
+INSERT INTO role (id, name) VALUES (DEFAULT, 'admin');
+INSERT INTO role (id, name) VALUES (DEFAULT, 'customer');
+
+INSERT INTO "user" (id, role_id, user_name, password, email) VALUES (DEFAULT, 2, 'liisi', 'student123', 'liisi@budgebuddy.com');
+INSERT INTO "user" (id,  role_id, user_name, password, email) VALUES (DEFAULT, 2, 'maris', 'student123', 'maris@budgetbuddy.com');
+INSERT INTO "user" (id,  role_id, user_name, password, email) VALUES (DEFAULT, 2, 'katri', 'student123', 'katri@budgetbuddy.com');
 
 INSERT INTO standard_category (id, name, sequence, type) VALUES (DEFAULT, 'Aktiivsed tulud', 1, 'i');
 INSERT INTO standard_category (id, name, sequence, type) VALUES (DEFAULT, 'Passiivsed tulud', 2, 'i');
@@ -55,10 +58,8 @@ INSERT INTO account_type (id, name, description) VALUES (DEFAULT, 'Investeerimis
 INSERT INTO account_type (id, name, description) VALUES (DEFAULT, 'Kodulaen', 'Kodulaenu jääk');
 INSERT INTO account_type (id, name, description) VALUES (DEFAULT, 'Muu laen', 'Muu laenu jääk');
 
-INSERT INTO account (id, user_id, type_id, name, desrciption, balance) VALUES (DEFAULT, 1, 1, 'Konto LHV pangas', 'Minu konto LHV pangas', 100);
-INSERT INTO account (id, user_id, type_id, name, desrciption, balance) VALUES (DEFAULT, 1, 3, 'Swedbank krediitkaart', 'Kredekas', 0);
+INSERT INTO account (id, user_id, type_id, name, description, balance) VALUES (DEFAULT, 1, 1, 'Konto LHV pangas', 'Minu konto LHV pangas', 100);
+INSERT INTO account (id, user_id, type_id, name, description, balance) VALUES (DEFAULT, 1, 3, 'Swedbank krediitkaart', 'Kredekas', 0);
 
 
 
-INSERT INTO role (id, name) VALUES (DEFAULT, 'admin');
-INSERT INTO role (id, name) VALUES (DEFAULT, 'customer');
