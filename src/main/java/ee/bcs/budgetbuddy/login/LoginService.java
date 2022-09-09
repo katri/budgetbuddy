@@ -14,7 +14,6 @@ public class LoginService {
     private UserService userService;
 
     public UserResponse registerNewUser(UserRequest request) {
-        User user = userService.addUser(request);
-        return null;
+        return userService.addUser(request);
     }
 }
