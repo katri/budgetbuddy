@@ -6,6 +6,14 @@ import ee.bcs.budgetbuddy.infrastructure.exception.DataNotFoundException;
 
 public class ValidationService {
 
+    public static final String USER_IN_USE = "Selline kasutaja on juba kasutusel";
+
+    public static void validateUserExists(boolean userExists, String userName) {
+        if (userExists) {
+            throw new BusinessException(USER_IN_USE, "Kasutajanimi " + userName + " on juba kasutusel.");
+        }
+    }
+
 //    public static final String ACCOUNT_NOT_EXISTS = "Sellist kontot ei eksisteeri";
 //    public static final String USER_NOT_EXISTS = "Sellist kasutajat ei eksisteeri";
 //    public static final String INSUFFICIENT_FUNDS = "Kontol pole piisavalt vahendeid tehingu sooritamiseks";

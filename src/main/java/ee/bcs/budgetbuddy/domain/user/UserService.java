@@ -1,7 +1,7 @@
 package ee.bcs.budgetbuddy.domain.user;
 
-import ee.bcs.budgetbuddy.domain.user.role.Role;
 import ee.bcs.budgetbuddy.domain.user.role.RoleService;
+import ee.bcs.budgetbuddy.validation.ValidationService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -17,13 +17,12 @@ public class UserService {
     @Resource
     private RoleService roleService;
 
-    public UserResponse addUser(UserRequest request) {
+    public User addUser(UserRequest request) {
+        boolean userExists = userRepository.existsByUserName(request.getUserName());
+        ValidationService.validateUserExists(userExists, request.getUserName());
         User user = userMapper.userRequestToUser(request);
         userRepository.save(user);
-        UserResponse userResponse = userMapper.userToUserResponse(user);
-        return userResponse;
-
+        return user;
     }
-
 
 }

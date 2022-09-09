@@ -14,6 +14,17 @@ public class LoginService {
     private UserService userService;
 
     public UserResponse registerNewUser(UserRequest request) {
-        return userService.addUser(request);
+        User user = userService.addUser(request);
+        createCustomCategoriesFromTemplate(9, 2022, user);
+
+//        return userMapper.userToUserResponse(user);
+        return null;
+
     }
+
+    public void createCustomCategoriesFromTemplate(int month, int year, User user) {
+
+    }
+
+
 }

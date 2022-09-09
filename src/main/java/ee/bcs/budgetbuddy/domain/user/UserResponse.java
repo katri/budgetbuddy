@@ -6,5 +6,5 @@ import java.io.Serializable;
 
 @Data
 public class UserResponse implements Serializable {
-    private Integer id;
+    private Integer userId;
 }
