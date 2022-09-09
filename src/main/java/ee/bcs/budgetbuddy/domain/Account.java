@@ -1,8 +1,7 @@
 package ee.bcs.budgetbuddy.domain;
 
+import ee.bcs.budgetbuddy.domain.user.User;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -24,8 +23,9 @@ public class Account {
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "type_id", nullable = false)
-    private AccountType type;
+    @JoinColumn(name = "account_type_id", nullable = false)
+    private AccountType accountType;
+
 
     @Size(max = 255)
     @NotNull
@@ -33,11 +33,12 @@ public class Account {
     private String name;
 
     @Size(max = 255)
-    @Column(name = "desrciption")
-    private String desrciption;
+    @Column(name = "description")
+    private String description;
 
     @NotNull
     @Column(name = "balance", nullable = false)
     private Integer balance;
 
 }
+

@@ -58,8 +58,8 @@ INSERT INTO account_type (id, name, description) VALUES (DEFAULT, 'Investeerimis
 INSERT INTO account_type (id, name, description) VALUES (DEFAULT, 'Kodulaen', 'Kodulaenu jääk');
 INSERT INTO account_type (id, name, description) VALUES (DEFAULT, 'Muu laen', 'Muu laenu jääk');
 
-INSERT INTO account (id, user_id, type_id, name, description, balance) VALUES (DEFAULT, 1, 1, 'Konto LHV pangas', 'Minu konto LHV pangas', 100);
-INSERT INTO account (id, user_id, type_id, name, description, balance) VALUES (DEFAULT, 1, 3, 'Swedbank krediitkaart', 'Kredekas', 0);
+INSERT INTO account (id, user_id, account_type_id, name, description, balance) VALUES (DEFAULT, 1, 1, 'Konto LHV pangas', 'Minu konto LHV pangas', 100);
+INSERT INTO account (id, user_id, account_type_id, name, description, balance) VALUES (DEFAULT, 1, 3, 'Swedbank krediitkaart', 'Kredekas', 0);
 
 
 

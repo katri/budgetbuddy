@@ -20,9 +20,9 @@ public class LoginController {
     //  sisse tulev request DTO info: username, password, email
     //  lisada kontrollerile klassile vastav service klass: LoginService
     //  LoginService klassi sees saad vajadusel Resource abil ligi teistele teenustele UserService, UserMapper, RoleService, jne
-    //  lisada domain package alla uus package: user
+    //  DONE - lisada domain package alla uus package: user
     //  sinna user package sisse lisada: entity User, UserService, UserRepository
-    //  Lisada user package sisse uus package: role
+    //  DONE - Lisada user package sisse uus package: role
     //  Sinna role package sisse lisada: entity Role, RoleService, RoleRepository
     //  Enne kui saab uut 'user'it lisada peaks kontrollimia UserService -> UserRepositori kaudu,
     //  et kas selline username on juba kasutusel (vihje: 'exists')

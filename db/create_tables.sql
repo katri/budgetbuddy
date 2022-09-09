@@ -17,7 +17,7 @@ GRANT ALL ON SCHEMA public TO PUBLIC;
 CREATE TABLE account (
                          id serial  NOT NULL,
                          user_id int  NOT NULL,
-                         type_id int  NOT NULL,
+                         account_type_id int  NOT NULL,
                          name varchar(255)  NOT NULL,
                          description varchar(255)  NULL,
                          balance int  NOT NULL,
@@ -142,7 +142,7 @@ CREATE TABLE "user" (
 -- foreign keys
 -- Reference: account_type (table: account)
 ALTER TABLE account ADD CONSTRAINT account_type
-    FOREIGN KEY (type_id)
+    FOREIGN KEY (account_type_id)
         REFERENCES account_type (id)
         NOT DEFERRABLE
             INITIALLY IMMEDIATE

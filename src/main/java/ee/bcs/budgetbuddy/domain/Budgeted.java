@@ -1,5 +1,6 @@
 package ee.bcs.budgetbuddy.domain;
 
+import ee.bcs.budgetbuddy.domain.user.User;
 import lombok.Data;
 
 import javax.persistence.*;

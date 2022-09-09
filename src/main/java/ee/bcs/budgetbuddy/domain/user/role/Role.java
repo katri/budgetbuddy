@@ -1,4 +1,4 @@
-package ee.bcs.budgetbuddy.domain;
+package ee.bcs.budgetbuddy.domain.user.role;
 
 import lombok.Data;
 import lombok.Getter;

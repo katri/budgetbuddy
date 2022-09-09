@@ -1,8 +1,7 @@
 package ee.bcs.budgetbuddy.domain;
 
+import ee.bcs.budgetbuddy.domain.user.User;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
