@@ -57,3 +57,8 @@ INSERT INTO account_type (id, name, description) VALUES (DEFAULT, 'Muu laen', 'M
 
 INSERT INTO account (id, user_id, type_id, name, desrciption, balance) VALUES (DEFAULT, 1, 1, 'Konto LHV pangas', 'Minu konto LHV pangas', 100);
 INSERT INTO account (id, user_id, type_id, name, desrciption, balance) VALUES (DEFAULT, 1, 3, 'Swedbank krediitkaart', 'Kredekas', 0);
+
+
+
+INSERT INTO role (id, name) VALUES (DEFAULT, 'admin');
+INSERT INTO role (id, name) VALUES (DEFAULT, 'customer');

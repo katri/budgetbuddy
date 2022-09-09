@@ -32,4 +32,8 @@ public class User {
     @Column(name = "email", nullable = false)
     private String email;
 
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "role_id", nullable = false)
+    private Role role;
+
 }

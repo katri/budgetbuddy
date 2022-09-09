@@ -1,8 +1,6 @@
 package ee.bcs.budgetbuddy.domain;
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -38,5 +36,8 @@ public class Budgeted {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "subcategory_id", nullable = false)
     private Subcategory subcategory;
+
+    @Column(name = "is_active", nullable = false)
+    private Boolean isActive = false;
 
 }
