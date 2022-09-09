@@ -1,18 +1,31 @@
-package ee.bcs.budgetbuddy.app;
+package ee.bcs.budgetbuddy.login;
 
+import ee.bcs.budgetbuddy.domain.user.UserRequest;
+import ee.bcs.budgetbuddy.domain.user.UserResponse;
+import ee.bcs.budgetbuddy.domain.user.UserService;
+import io.swagger.v3.oas.annotations.Operation;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
+
 @RestController
+@RequestMapping("/login")
+
 public class LoginController {
+    @Resource
+    private LoginService loginService;
 
-    // TODO: Koodi kirjutades vahetage pidevalt tiimiliiget, kes on klaviatuuri taga.
 
-    // TODO: lasta andmebaasis peale uuesti create_tables.sql ja create_data.sql
+    @PostMapping("/register/user")
+    @Operation(summary = "Uue kasutaja lisamine")
+    public UserResponse registerNewUser(@RequestBody UserRequest request) {
+        return loginService.registerNewUser(request);
 
-    // TODO: lisa näidisandmeid tabelitesse standard_category, standard_subcategory, standard_category_relation
-    //  salvesta insert laused create_data.sql'i
-    //  type väärtused siis 'i' (incoming/tulud) ja 'o' (outgoing/kulud)
-    //  Ei pea väga palju näidise andmeid kohe alguses lisama. Saate hiljem täiendada.
+    }
+
 
 
     // TODO: lisada kontroller uue kasutaja registreerimiseks
