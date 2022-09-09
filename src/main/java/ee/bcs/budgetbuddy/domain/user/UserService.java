@@ -18,9 +18,7 @@ public class UserService {
     private RoleService roleService;
 
     public UserResponse addUser(UserRequest request) {
-        System.out.println();
         User user = userMapper.userRequestToUser(request);
-        Role role = roleService.getRole(2);
         userRepository.save(user);
         UserResponse userResponse = userMapper.userToUserResponse(user);
         return userResponse;

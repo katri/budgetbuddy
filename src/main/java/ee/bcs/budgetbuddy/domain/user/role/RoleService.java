@@ -10,8 +10,4 @@ public class RoleService {
     @Resource
     private RoleRepository roleRepository;
 
-    public Role getRole(Integer roleId) {
-        Optional<Role> role = roleRepository.findById(roleId);
-        return role.get();
-    }
 }
