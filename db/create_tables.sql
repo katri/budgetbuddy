@@ -19,7 +19,7 @@ CREATE TABLE account (
                          user_id int  NOT NULL,
                          type_id int  NOT NULL,
                          name varchar(255)  NOT NULL,
-                         desrciption varchar(255)  NULL,
+                         description varchar(255)  NULL,
                          balance int  NOT NULL,
                          CONSTRAINT account_pk PRIMARY KEY (id)
 );
