@@ -42,7 +42,6 @@ public class LoginService {
     public UserResponse registerNewUser(UserRequest request) {
         User user = userService.addUser(request);
         createCustomCategoriesFromTemplate(user);
-        createCustomSubcategoriesFromTemplate(user);
         return userMapper.userToUserResponse(user);
     }
 
@@ -51,6 +50,8 @@ public class LoginService {
         List<Category> categories = categoryService.createCategoriesForUser(standardCategories);
         updateCategoriesWithUser(categories, user);
         categoryService.saveCategoriesToDatabase(categories);
+        List<Subcategory> subcategories = createCustomSubcategoriesFromTemplate(user);
+        createCategoryRelations(categories, subcategories);
     }
 
     public void updateCategoriesWithUser(List<Category> categories, User user) {
@@ -59,11 +60,12 @@ public class LoginService {
         }
     }
 
-    public void createCustomSubcategoriesFromTemplate(User user) {
+    public List<Subcategory> createCustomSubcategoriesFromTemplate(User user) {
         List<StandardSubcategory> standardSubcategories = standardSubcategoryService.findAllSubcategories();
         List<Subcategory> subcategories = subcategoryService.createSubcategoriesForUser(standardSubcategories);
         //updateSubcategoriesWithUser(subcategories);
         subcategoryService.saveSubcategoriesToDatabase(subcategories);
+        return subcategories;
     }
 
     private List<CategoryRelation> createCategoryRelations(List<Category> categories, List<Subcategory> subcategories) {
