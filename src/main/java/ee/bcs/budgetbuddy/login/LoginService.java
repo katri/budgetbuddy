@@ -7,6 +7,7 @@ import ee.bcs.budgetbuddy.domain.standardCategory.StandardCategoryService;
 import ee.bcs.budgetbuddy.domain.standardSubcategory.StandardSubcategory;
 import ee.bcs.budgetbuddy.domain.standardSubcategory.StandardSubcategoryService;
 import ee.bcs.budgetbuddy.domain.subcategory.Subcategory;
+import ee.bcs.budgetbuddy.domain.subcategory.SubcategoryService;
 import ee.bcs.budgetbuddy.domain.user.*;
 import org.hibernate.tool.hbm2ddl.SchemaUpdate;
 import org.springframework.stereotype.Service;
@@ -28,10 +29,13 @@ public class LoginService {
     private CategoryService categoryService;
     @Resource
     private StandardSubcategoryService standardSubcategoryService;
+    @Resource
+    private SubcategoryService subcategoryService;
 
     public UserResponse registerNewUser(UserRequest request) {
         User user = userService.addUser(request);
         createCustomCategoriesFromTemplate(user);
+        createCustomSubcategoriesFromTemplate(user);
         return userMapper.userToUserResponse(user);
     }
 
@@ -41,22 +45,20 @@ public class LoginService {
         updateCategoriesWithUser(categories, user);
         categoryService.saveCategoriesToDatabase(categories);
     }
-
     public void updateCategoriesWithUser(List<Category> categories, User user) {
         for (Category category : categories) {
             category.setUser(user);
         }
     }
-
-    public void createCustomSubCategoriesFromTemplate(User user){
+    public void createCustomSubcategoriesFromTemplate(User user) {
         List<StandardSubcategory> standardSubcategories = standardSubcategoryService.findAllSubcategories();
-        List<Subcategory> subcategories = subcategoryService.createCategoriesForUser(standardSubcategories);
-        updateSubcategoriesWithUser(subcategories, user);
+        List<Subcategory> subcategories = subcategoryService.createSubcategoriesForUser(standardSubcategories);
+        //updateSubcategoriesWithUser(subcategories);
+        subcategoryService.saveSubcategoriesToDatabase(subcategories);
     }
-    /*
-        List<Category> categories = categoryService.createCategoriesForUser(standardCategories);
-        updateCategoriesWithUser(categories, user);
-        categoryService.saveCategoriesToDatabase(categories);
-    }
-    */
+    //private void updateSubcategoriesWithUser(List<Subcategory> subcategories, User user) {
+    // for (Subcategory subcategory : subcategories){
+    // subcategory.setUser
+    // }
 }
+
