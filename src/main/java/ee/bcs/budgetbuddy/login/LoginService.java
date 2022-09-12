@@ -2,6 +2,7 @@ package ee.bcs.budgetbuddy.login;
 
 import ee.bcs.budgetbuddy.domain.category.Category;
 import ee.bcs.budgetbuddy.domain.category.CategoryRelation;
+import ee.bcs.budgetbuddy.domain.category.CategoryRelationService;
 import ee.bcs.budgetbuddy.domain.category.CategoryService;
 import ee.bcs.budgetbuddy.domain.standardCategory.StandardCategory;
 import ee.bcs.budgetbuddy.domain.standardCategory.StandardCategoryRelation;
@@ -12,7 +13,6 @@ import ee.bcs.budgetbuddy.domain.standardSubcategory.StandardSubcategoryService;
 import ee.bcs.budgetbuddy.domain.subcategory.Subcategory;
 import ee.bcs.budgetbuddy.domain.subcategory.SubcategoryService;
 import ee.bcs.budgetbuddy.domain.user.*;
-import org.hibernate.tool.hbm2ddl.SchemaUpdate;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -39,19 +39,36 @@ public class LoginService {
     @Resource
     private StandardCategoryRelationRepository standardCategoryRelationRepository;
 
+    @Resource
+    private CategoryRelationService categoryRelationService;
+
+
     public UserResponse registerNewUser(UserRequest request) {
         User user = userService.addUser(request);
-        createCustomCategoriesFromTemplate(user);
+        createAndSaveCustomCategoriesFromTemplate(user);
         return userMapper.userToUserResponse(user);
     }
 
-    public void createCustomCategoriesFromTemplate(User user) {
+    public void createAndSaveCustomCategoriesFromTemplate(User user) {
         List<StandardCategory> standardCategories = standardCategoryService.findAllCategories();
+        // valmistame ette categories read
         List<Category> categories = categoryService.createCategoriesForUser(standardCategories);
         updateCategoriesWithUser(categories, user);
+
+        // salvestame categories read
         categoryService.saveCategoriesToDatabase(categories);
+
+        // valmistame ette Sub read
         List<Subcategory> subcategories = createCustomSubcategoriesFromTemplate(user);
-        createCategoryRelations(categories, subcategories);
+
+        // salvestame read
+        subcategoryService.saveSubcategoriesToDatabase(subcategories);
+
+        //valmistame ette category_relations read
+      List<CategoryRelation>categoryRelations = createCategoryRelations(categories, subcategories);
+
+        //salvestame read
+        categoryRelationService.saveCategoryRelations(categoryRelations);
     }
 
     public void updateCategoriesWithUser(List<Category> categories, User user) {
@@ -64,7 +81,7 @@ public class LoginService {
         List<StandardSubcategory> standardSubcategories = standardSubcategoryService.findAllSubcategories();
         List<Subcategory> subcategories = subcategoryService.createSubcategoriesForUser(standardSubcategories);
         //updateSubcategoriesWithUser(subcategories);
-        subcategoryService.saveSubcategoriesToDatabase(subcategories);
+
         return subcategories;
     }
 
