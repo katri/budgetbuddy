@@ -1,4 +1,4 @@
-package ee.bcs.budgetbuddy.domain;
+package ee.bcs.budgetbuddy.domain.standardCategory;
 
 import lombok.Data;
 import lombok.Getter;
@@ -10,8 +10,8 @@ import javax.validation.constraints.Size;
 
 @Data
 @Entity
-@Table(name = "standard_category")
-public class StandardCategory {
+@Table(name = "standard_subcategory")
+public class StandardSubcategory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -27,8 +27,7 @@ public class StandardCategory {
     private Integer sequence;
 
     @Size(max = 1)
-    @NotNull
-    @Column(name = "type", nullable = false, length = 1)
+    @Column(name = "type", length = 1)
     private String type;
 
 }
