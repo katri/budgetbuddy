@@ -1,4 +1,4 @@
-package ee.bcs.budgetbuddy.domain.category;
+package ee.bcs.budgetbuddy.domain.subcategory;
 
 import lombok.Data;
 import lombok.Getter;

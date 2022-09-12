@@ -1,5 +1,6 @@
 package ee.bcs.budgetbuddy.domain.standardCategory;
 
+import ee.bcs.budgetbuddy.domain.standardSubcategory.StandardSubcategory;
 import lombok.Data;
 
 import javax.persistence.*;
