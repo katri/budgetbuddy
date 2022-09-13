@@ -12,8 +12,7 @@ public class StandardCategoryService {
     private StandardCategoryRepository standardCategoryRepository;
 
 
-    public List<StandardCategory> findAllCategories() {
+    public List<StandardCategory> findAllStandardCategories() {
        return standardCategoryRepository.findAll();
-
     }
 }
