@@ -23,10 +23,8 @@ import java.util.List;
 public class LoginService {
     @Resource
     private UserService userService;
-
     @Resource
     private UserMapper userMapper;
-
     @Resource
     private StandardCategoryService standardCategoryService;
     @Resource
@@ -35,10 +33,8 @@ public class LoginService {
     private StandardSubcategoryService standardSubcategoryService;
     @Resource
     private SubcategoryService subcategoryService;
-
     @Resource
     private StandardCategoryRelationRepository standardCategoryRelationRepository;
-
     @Resource
     private CategoryRelationService categoryRelationService;
 
