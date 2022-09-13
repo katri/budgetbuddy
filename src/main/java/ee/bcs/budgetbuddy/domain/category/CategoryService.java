@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 
@@ -48,60 +47,56 @@ public class CategoryService {
     }
 
     public SetupResponse getIncomeCategoriesSetup(Integer userId) {
-        Optional<Category> category = categoryRepository.findById(userId);
-        Optional<CategoryRelation> categoryRelation = categoryRelationRepository.findById(category.get().getId());
-        Subcategory subcategory = categoryRelation.get().getSubcategory();
+        List<Category> categories = categoryRepository.findCategoriesBy(userId, "i");
+        for (Category category : categories) {
+            Integer categoryId = category.getId();
 
-        subcategoryRepository.
+            List<CategoryRelation> categoryRelations = categoryRelationRepository.findSubCategoriesBy(categoryId);
+//        Optional<CategoryRelation> categoryRelations;
+//        categoryRelations = categoryRelationRepository.findById(categories.get().getId());
+            ArrayList<Subcategory> subcategories = new ArrayList<>();
+            for (CategoryRelation categoryRelation : categoryRelations) {
+                Subcategory subcategory = categoryRelation.getSubcategory();
+                subcategories.add(subcategory);
 
-
-        //   List<Category> categories = categoryRepository.findCategoriesBy(userId, "i");
-
+            }
+        }
         List<CategoryInfo> categoryInfos = categoryMapper.CategoriesToCategoryInfos(categories);
-
-    //    categoryRelationRepository.findSubcategoriesBy()
-
-        ArrayList<SubcategoryInfo> subCategoryInfos = new ArrayList<>();
-
-        // List<Subcategory> subcategories = subcategoryRepository.findSubcategories
+        for (CategoryInfo categoryInfo : categoryInfos) {
+            SubcategoryInfo subcategoryInfo =
 
 
-
+        }
 
         SetupResponse setupResponse = new SetupResponse();
         setupResponse.setCategories(categoryInfos);
         return setupResponse;
+    }
 
 
-//        private void addUserToAllCategories(List<Category> categories, User user) {
-//            for (Category category : categories) {
-//                category.setUser(user);
-//            }
-//        }
-
-//        CategoryInfos.add(CategoryInfos);
-//
-//        setupResponse.setCategories(CategoryInfos);
-//
-//        ArrayList<SubcategoryInfo> subcategories = new ArrayList<>();
-//
-//        ArrayList<SubcategoryInfo> subcategories = createActiveSubcategoryInfos(1);
-
-
-//        ArrayList<SubcategoryInfo> subcategoriesActive = createActiveSubcategoryInfos(1);
-//        ArrayList<SubcategoryInfo> subcategoriesPassive = createPassiveSubcategoryInfos(2);
-//
-//        CategoryInfo categoryInfo1 = createCategoryInfo("Aktiivne tulu", 1, subcategoriesActive);
-//        CategoryInfo categoryInfo2 = createCategoryInfo("Passiivne tulu", 2, subcategoriesPassive);
-//
-//        List<CategoryInfo> CategoryInfos = new ArrayList<>();
-//        CategoryInfos.add(categoryInfo1);
-//        CategoryInfos.add(categoryInfo2);
-//
-//        SetupResponse setupResponse = new SetupResponse();
-//        setupResponse.setCategories(CategoryInfos);
-//        return setupResponse;
-
+    private ArrayList<SubcategoryInfo> createActiveSubcategoryInfos(Integer categoryId, Subcategory subcategory) {
+        ArrayList<SubcategoryInfo> subCategoryInfos = new ArrayList<>();
+        for (SubcategoryInfo subcategoryInfo : subCategoryInfos) {
+            createSubcategoryInfo(categoryId, subcategory);
+            subCategoryInfos.add(subcategoryInfo);
+        }
+        return subCategoryInfos;
 
     }
+
+
+    private SubcategoryInfo createSubcategoryInfo(Integer categoryId, Subcategory subcategory) {
+        SubcategoryInfo subcategoryInfo = new SubcategoryInfo();
+        subcategoryInfo.setCategoryId(categoryId);
+        subcategoryInfo.setSubcategoryId(subcategory.getId());
+        subcategoryInfo.setSubcategoryName(subcategory.getName());
+        subcategoryInfo.setIsActive(true);
+        return subcategoryInfo;
+    }
+
+
 }
+
+
+
+
