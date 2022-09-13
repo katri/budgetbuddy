@@ -1,4 +1,4 @@
-package ee.bcs.budgetbuddy.login;
+package ee.bcs.budgetbuddy.app.login;
 
 import lombok.Data;
 
