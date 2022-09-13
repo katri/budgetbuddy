@@ -22,23 +22,14 @@ public class CategoryService {
     private CategoryRepository categoryRepository;
 
     public List<Category> createAndSaveCategories(User user) {
-        // leiame adnmebaasist tabeli 'standard_categories' read
         List<StandardCategory> standardCategories = standardCategoryService.findAllStandardCategories();
-
-        // valmistame ette 'categories' tabeli read
         List<Category> categories = categoryMapper.standardCategoriesToCategories(standardCategories);
-
-        // uuendame 'categories' read 'user_id' infoga
-        updateCategoriesWithUser(categories, user);
-
-        // salvestame categories read
+        addUserToAllCategories(categories, user);
         categoryRepository.saveAll(categories);
-
-        // tagastame categories read (neid läheb veel tarvis 'category_relation' tabeli täitmisel)
         return categories;
     }
 
-    private void updateCategoriesWithUser(List<Category> categories, User user) {
+    private void addUserToAllCategories(List<Category> categories, User user) {
         for (Category category : categories) {
             category.setUser(user);
         }

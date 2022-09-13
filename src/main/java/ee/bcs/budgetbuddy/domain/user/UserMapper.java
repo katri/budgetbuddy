@@ -1,5 +1,7 @@
 package ee.bcs.budgetbuddy.domain.user;
 
+import ee.bcs.budgetbuddy.app.login.UserRequest;
+import ee.bcs.budgetbuddy.app.login.UserResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
