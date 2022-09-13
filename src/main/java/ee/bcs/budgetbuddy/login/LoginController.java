@@ -1,7 +1,5 @@
 package ee.bcs.budgetbuddy.login;
 
-import ee.bcs.budgetbuddy.domain.user.UserRequest;
-import ee.bcs.budgetbuddy.domain.user.UserResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

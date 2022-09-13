@@ -30,14 +30,14 @@ public class LoginService {
     @Resource
     private UserMapper userMapper;
 
+    @Transactional
     public UserResponse registerNewUser(UserRequest request) {
         User user = userService.addUser(request);
-        createAndSaveCustomCategoriesForUser(user);
+        createAndSaveCategoriesFromTemplate(user);
         return userMapper.userToUserResponse(user);
     }
 
-    @Transactional
-    public void createAndSaveCustomCategoriesForUser(User user) {
+    public void createAndSaveCategoriesFromTemplate(User user) {
         List<Category> categories = categoryService.createAndSaveCategories(user);
         List<Subcategory> subcategories = subcategoryService.createAndSaveSubcategories();
         categoryRelationService.createAndSaveCategoryRelations(categories, subcategories);
