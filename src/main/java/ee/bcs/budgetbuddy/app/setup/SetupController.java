@@ -1,7 +1,9 @@
 package ee.bcs.budgetbuddy.app.setup;
 
 import ee.bcs.budgetbuddy.domain.category.CategoryService;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,24 +19,31 @@ public class SetupController {
     private CategoryService categoryService;
 
     @GetMapping("/categories/income")
+    @Operation(summary = "Ühe kasutaja tulukategooriate ja subkategooriate kuvamine",
+            description = "Võetakse sisse kasutaja info, leitakse üles kasutaja kõik tulukategooriad (type i), " +
+                    "seejärel leitakse CategoryMapperi abil subkategooriad ja tagastatakse kogu info SetupResponse sõnumis")
     public SetupResponse getIncomeCategoriesSetup(Integer userId) {
         SetupResponse setupResponse = categoryService.getIncomeCategoriesSetup(userId);
-
         return setupResponse;
-        // return createIncomeMockData();
     }
 
     @GetMapping("/categories/expense")
+    @Operation(summary = "Ühe kasutaja kulukategooriate ja subkategooriate kuvamine",
+            description = "Võetakse sisse kasutaja info, leitakse üles kasutaja kõik kulukategooriad (type o), " +
+                    "seejärel leitakse CategoryMapperi abil subkategooriad ja tagastatakse kogu info SetupResponse sõnumis")
     public SetupResponse getExpenseCategoriesSetup(Integer userId) {
         SetupResponse setupResponse = categoryService.getExpenseCategoriesSetup(userId);
         return setupResponse;
     }
+
+//    public void updateCategoryInfo(@RequestBody CategoryChangeRequest request) {
+//        categoryService.updateCategoryInfo(request);
+//    }
 }
 
 
-
-        // return createIncomeMockData();
-
+// return createIncomeMockData();
+// return createIncomeMockData();
 
 //    private SetupResponse createIncomeMockData() {
 //        ArrayList<SubcategoryInfo> subcategoriesActive = createActiveSubcategoryInfos(1);

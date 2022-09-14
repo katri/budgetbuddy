@@ -1,5 +1,6 @@
 package ee.bcs.budgetbuddy.domain.category;
 
+import ee.bcs.budgetbuddy.app.setup.CategoryChangeRequest;
 import ee.bcs.budgetbuddy.app.setup.SubcategoryInfo;
 import ee.bcs.budgetbuddy.domain.subcategory.Subcategory;
 import org.mapstruct.Mapper;
@@ -19,4 +20,6 @@ public interface CategoryRelationsMapper {
     SubcategoryInfo CategoryRelationToSubcategoryInfo(CategoryRelation categoryRelation);
 
     List<SubcategoryInfo> CategoryRelationsToSubcategoryInfos(List<CategoryRelation> categoryRelations);
+
+
 }

@@ -1,5 +1,6 @@
 package ee.bcs.budgetbuddy.domain.category;
 
+import ee.bcs.budgetbuddy.app.setup.CategoryChangeRequest;
 import ee.bcs.budgetbuddy.app.setup.CategoryInfo;
 import ee.bcs.budgetbuddy.app.setup.SetupResponse;
 import ee.bcs.budgetbuddy.app.setup.SubcategoryInfo;
@@ -33,6 +34,11 @@ public class CategoryService {
 
     @Resource
     private CategoryRelationsMapper categoryRelationsMapper;
+
+//    public  void updateCategoryInfo(CategoryChangeRequest request) {
+//
+//        CategoryRelation categoryRelation = categoryRelationsMapper.changeRequestToCategoryRelation(request);
+//    }
 
 
     public List<Category> createAndSaveCategories(User user) {
