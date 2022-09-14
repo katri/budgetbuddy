@@ -20,24 +20,24 @@ INSERT INTO "user" (id,  role_id, user_name, password, email) VALUES (DEFAULT, 2
 
 INSERT INTO standard_category (id, name, sequence, type) VALUES (DEFAULT, 'Aktiivsed tulud', 1, 'i');
 INSERT INTO standard_category (id, name, sequence, type) VALUES (DEFAULT, 'Passiivsed tulud', 2, 'i');
-INSERT INTO standard_category (id, name, sequence, type) VALUES (DEFAULT, 'Vältimatud kulud', 3, 'o');
-INSERT INTO standard_category (id, name, sequence, type) VALUES (DEFAULT, 'Eluase', 4, 'o');
-INSERT INTO standard_category (id, name, sequence, type) VALUES (DEFAULT, 'Hooajalised kulud', 5, 'o');
-INSERT INTO standard_category (id, name, sequence, type) VALUES (DEFAULT, 'Elukvaliteet', 6, 'o');
-INSERT INTO standard_category (id, name, sequence, type) VALUES (DEFAULT, 'Lapsed', 7, 'o');
-INSERT INTO standard_category (id, name, sequence, type) VALUES (DEFAULT, 'Meelelahutus', 8, 'o');
+INSERT INTO standard_category (id, name, sequence, type) VALUES (DEFAULT, 'Vältimatud kulud', 3, 'e');
+INSERT INTO standard_category (id, name, sequence, type) VALUES (DEFAULT, 'Eluase', 4, 'e');
+INSERT INTO standard_category (id, name, sequence, type) VALUES (DEFAULT, 'Hooajalised kulud', 5, 'e');
+INSERT INTO standard_category (id, name, sequence, type) VALUES (DEFAULT, 'Elukvaliteet', 6, 'e');
+INSERT INTO standard_category (id, name, sequence, type) VALUES (DEFAULT, 'Lapsed', 7, 'e');
+INSERT INTO standard_category (id, name, sequence, type) VALUES (DEFAULT, 'Meelelahutus', 8, 'e');
 
 INSERT INTO standard_subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Palk', 1, 'i');
 INSERT INTO standard_subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Lastetoetus', 2, 'i');
 INSERT INTO standard_subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Dividendid', 3, 'i');
 INSERT INTO standard_subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Üüritulu', 4, 'i');
-INSERT INTO standard_subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Toidupood', 5, 'o');
-INSERT INTO standard_subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Transport', 6, 'o');
-INSERT INTO standard_subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Lemmikloom', 7, 'o');
-INSERT INTO standard_subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Telefon', 8, 'o');
-INSERT INTO standard_subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Kodukulud', 9, 'o');
-INSERT INTO standard_subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Ravikulud', 10, 'o');
-INSERT INTO standard_subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Tasud ja viivised', 11, 'o');
+INSERT INTO standard_subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Toidupood', 5, 'e');
+INSERT INTO standard_subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Transport', 6, 'e');
+INSERT INTO standard_subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Lemmikloom', 7, 'e');
+INSERT INTO standard_subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Telefon', 8, 'e');
+INSERT INTO standard_subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Kodukulud', 9, 'e');
+INSERT INTO standard_subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Ravikulud', 10, 'e');
+INSERT INTO standard_subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Tasud ja viivised', 11, 'e');
 
 INSERT INTO standard_category_relation (id, standard_category_id, standard_subcategory_id) VALUES (DEFAULT, 1, 1);
 INSERT INTO standard_category_relation (id, standard_category_id, standard_subcategory_id) VALUES (DEFAULT, 1, 2);
