@@ -34,11 +34,6 @@ public class CategoryService {
     @Resource
     private CategoryRelationsMapper categoryRelationsMapper;
 
-    @Resource
-    private SubcategoryRepository subcategoryRepository;
-
-    @Resource
-    private SubcategoryMapper subcategoryMapper;
 
     public List<Category> createAndSaveCategories(User user) {
         List<StandardCategory> standardCategories = standardCategoryService.findAllStandardCategories();
