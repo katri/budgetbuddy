@@ -24,6 +24,18 @@ public class SetupController {
         // return createIncomeMockData();
     }
 
+    @GetMapping("/categories/expense")
+    public SetupResponse getExpenseCategoriesSetup(Integer userId) {
+        SetupResponse setupResponse = categoryService.getExpenseCategoriesSetup(userId);
+        return setupResponse;
+    }
+}
+
+
+
+        // return createIncomeMockData();
+
+
 //    private SetupResponse createIncomeMockData() {
 //        ArrayList<SubcategoryInfo> subcategoriesActive = createActiveSubcategoryInfos(1);
 //        ArrayList<SubcategoryInfo> subcategoriesPassive = createPassiveSubcategoryInfos(2);
@@ -80,8 +92,4 @@ public class SetupController {
 //        return categoryInfo;
 //    }
 
-    @GetMapping("/categories/expense")
-    public SetupResponse getExpenseCategoriesSetup(Integer userId) {
-        return null;
-    }
-}
+

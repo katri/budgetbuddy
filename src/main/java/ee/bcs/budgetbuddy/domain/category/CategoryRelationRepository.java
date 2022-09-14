@@ -1,6 +1,5 @@
 package ee.bcs.budgetbuddy.domain.category;
 
-import ee.bcs.budgetbuddy.domain.subcategory.Subcategory;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
