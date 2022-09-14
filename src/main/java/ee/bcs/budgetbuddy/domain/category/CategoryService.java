@@ -1,24 +1,23 @@
 package ee.bcs.budgetbuddy.domain.category;
 
-import ee.bcs.budgetbuddy.app.setup.CategoryChangeRequest;
 import ee.bcs.budgetbuddy.app.setup.CategoryInfo;
 import ee.bcs.budgetbuddy.app.setup.SetupResponse;
 import ee.bcs.budgetbuddy.app.setup.SubcategoryInfo;
 import ee.bcs.budgetbuddy.domain.standardCategory.StandardCategory;
 import ee.bcs.budgetbuddy.domain.standardCategory.StandardCategoryService;
-import ee.bcs.budgetbuddy.domain.subcategory.Subcategory;
-import ee.bcs.budgetbuddy.domain.subcategory.SubcategoryMapper;
-import ee.bcs.budgetbuddy.domain.subcategory.SubcategoryRepository;
 import ee.bcs.budgetbuddy.domain.user.User;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
 import java.util.List;
+
+import static ee.bcs.budgetbuddy.app.CategoryType.EXPENSE;
+import static ee.bcs.budgetbuddy.app.CategoryType.INCOME;
 
 @Service
 
 public class CategoryService {
+
 
     @Resource
     private StandardCategoryService standardCategoryService;
@@ -56,7 +55,7 @@ public class CategoryService {
     }
 
     public SetupResponse getIncomeCategoriesSetup(Integer userId) {
-        List<CategoryInfo> categoryInfos = createCategoryInfos(userId, "i");
+        List<CategoryInfo> categoryInfos = createCategoryInfos(userId, INCOME);
         for (CategoryInfo categoryInfo : categoryInfos) {
             addSubcategory(categoryInfo);
         }
@@ -66,7 +65,7 @@ public class CategoryService {
     }
 
     public SetupResponse getExpenseCategoriesSetup(Integer userId) {
-        List<CategoryInfo> categoryInfos = createCategoryInfos(userId, "o");
+        List<CategoryInfo> categoryInfos = createCategoryInfos(userId, EXPENSE);
         for (CategoryInfo categoryInfo : categoryInfos) {
             addSubcategory(categoryInfo);
         }
@@ -77,14 +76,13 @@ public class CategoryService {
 
     private List<CategoryInfo> createCategoryInfos(Integer userId, String type) {
         List<Category> categories = categoryRepository.findCategoriesBy(userId, type);
-        List<CategoryInfo> categoryInfos = categoryMapper.CategoriesToCategoryInfos(categories);
-        return categoryInfos;
+        return categoryMapper.categoriesToCategoryInfos(categories);
     }
 
 
     private void addSubcategory(CategoryInfo categoryInfo) {
         List<CategoryRelation> categoryRelations = categoryRelationRepository.findSubCategoriesBy(categoryInfo.getCategoryId());
-        List<SubcategoryInfo> subcategories = categoryRelationsMapper.CategoryRelationsToSubcategoryInfos(categoryRelations);
+        List<SubcategoryInfo> subcategories = categoryRelationsMapper.categoryRelationsToSubcategoryInfos(categoryRelations);
         categoryInfo.setSubcategories(subcategories);
     }
 

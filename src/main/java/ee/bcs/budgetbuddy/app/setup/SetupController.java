@@ -23,8 +23,7 @@ public class SetupController {
             description = "Võetakse sisse kasutaja info, leitakse üles kasutaja kõik tulukategooriad (type i), " +
                     "seejärel leitakse CategoryMapperi abil subkategooriad ja tagastatakse kogu info SetupResponse sõnumis")
     public SetupResponse getIncomeCategoriesSetup(Integer userId) {
-        SetupResponse setupResponse = categoryService.getIncomeCategoriesSetup(userId);
-        return setupResponse;
+        return categoryService.getIncomeCategoriesSetup(userId);
     }
 
     @GetMapping("/categories/expense")
@@ -32,10 +31,17 @@ public class SetupController {
             description = "Võetakse sisse kasutaja info, leitakse üles kasutaja kõik kulukategooriad (type o), " +
                     "seejärel leitakse CategoryMapperi abil subkategooriad ja tagastatakse kogu info SetupResponse sõnumis")
     public SetupResponse getExpenseCategoriesSetup(Integer userId) {
-        SetupResponse setupResponse = categoryService.getExpenseCategoriesSetup(userId);
-        return setupResponse;
+        return categoryService.getExpenseCategoriesSetup(userId);
     }
 
+
+
+    // TODO: 14.09.2022  : uue subcategory lisamine (categoryId ja subcategoryName)
+    // TODO: 14.09.2022 : uue kategooria lisamine (userId categoryName 
+    
+    
+    
+    
 //    public void updateCategoryInfo(@RequestBody CategoryChangeRequest request) {
 //        categoryService.updateCategoryInfo(request);
 //    }

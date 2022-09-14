@@ -19,6 +19,6 @@ public interface CategoryMapper {
     @Mapping(target = "categoryName", source = "name")
     CategoryInfo CategoryToCategoryInfo(Category category);
 
-    List<CategoryInfo> CategoriesToCategoryInfos(List<Category> categories);
+    List<CategoryInfo> categoriesToCategoryInfos(List<Category> categories);
 
 }
