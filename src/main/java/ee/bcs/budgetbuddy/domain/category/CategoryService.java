@@ -5,11 +5,16 @@ import ee.bcs.budgetbuddy.app.setup.SetupResponse;
 import ee.bcs.budgetbuddy.app.setup.SubcategoryInfo;
 import ee.bcs.budgetbuddy.domain.standardCategory.StandardCategory;
 import ee.bcs.budgetbuddy.domain.standardCategory.StandardCategoryService;
+import ee.bcs.budgetbuddy.domain.subcategory.Subcategory;
+import ee.bcs.budgetbuddy.domain.subcategory.SubcategoryRepository;
 import ee.bcs.budgetbuddy.domain.user.User;
+import ee.bcs.budgetbuddy.domain.user.UserRepository;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 import static ee.bcs.budgetbuddy.app.CategoryType.EXPENSE;
 import static ee.bcs.budgetbuddy.app.CategoryType.INCOME;
@@ -34,10 +39,11 @@ public class CategoryService {
     @Resource
     private CategoryRelationsMapper categoryRelationsMapper;
 
-//    public  void updateCategoryInfo(CategoryChangeRequest request) {
-//
-//        CategoryRelation categoryRelation = categoryRelationsMapper.changeRequestToCategoryRelation(request);
-//    }
+    @Resource
+    private SubcategoryRepository subcategoryRepository;
+
+    @Resource
+    private UserRepository userRepository;
 
 
     public List<Category> createAndSaveCategories(User user) {
@@ -79,12 +85,50 @@ public class CategoryService {
         return categoryMapper.categoriesToCategoryInfos(categories);
     }
 
-
     private void addSubcategory(CategoryInfo categoryInfo) {
         List<CategoryRelation> categoryRelations = categoryRelationRepository.findSubCategoriesBy(categoryInfo.getCategoryId());
         List<SubcategoryInfo> subcategories = categoryRelationsMapper.categoryRelationsToSubcategoryInfos(categoryRelations);
         categoryInfo.setSubcategories(subcategories);
     }
 
+    @Transactional
+    public void addSubcategory(Integer categoryId, String subcategoryName) {
+        Optional<Category> category = categoryRepository.findById(categoryId);
+        Subcategory subcategory = createNewSubcategory(subcategoryName, category);
+        createNewCategoryRelation(category, subcategory);
+    }
+
+    private Subcategory createNewSubcategory(String subcategoryName, Optional<Category> category) {
+        Subcategory subcategory = new Subcategory();
+        subcategory.setName(subcategoryName);
+        subcategory.setSequence(20); // kuidas seda saada?
+        subcategory.setType(category.get().getType());
+        subcategoryRepository.save(subcategory);
+        return subcategory;
+    }
+    private void createNewCategoryRelation(Optional<Category> category, Subcategory subcategory) {
+        CategoryRelation categoryRelation = new CategoryRelation();
+        categoryRelation.setCategory(category.get());
+        categoryRelation.setSubcategory(subcategory);
+        categoryRelation.setIsActive(true);
+        categoryRelationRepository.save(categoryRelation);
+    }
+
+    public void addIncomeCategory(Integer userId, String categoryName) {
+        Optional<User> user = userRepository.findById(userId);
+        createNewCategory(categoryName, user, INCOME);
+    }
+    public void addExpenseCategory(Integer userId, String categoryName) {
+        Optional<User> user = userRepository.findById(userId);
+        createNewCategory(categoryName, user, EXPENSE);
+    }
+    private void createNewCategory(String categoryName, Optional<User> user, String type) {
+        Category category = new Category();
+        category.setUser(user.get());
+        category.setName(categoryName);
+        category.setSequence(100); // kuidas seda saada?
+        category.setType(type);
+        categoryRepository.save(category);
+    }
 
 }

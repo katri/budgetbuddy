@@ -2,10 +2,7 @@ package ee.bcs.budgetbuddy.app.setup;
 
 import ee.bcs.budgetbuddy.domain.category.CategoryService;
 import io.swagger.v3.oas.annotations.Operation;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
@@ -34,12 +31,27 @@ public class SetupController {
         return categoryService.getExpenseCategoriesSetup(userId);
     }
 
+    @PostMapping("subcategory/add")
+    @Operation(summary = "Uue subkategooria lisamine kasutajale kategooria alla. Loob kategooria ja subkategooria seose CategoryRelations tabelissse",
+            description = " ")
+    public void addSubcategory(Integer categoryId, String subcategoryName) {
+        categoryService.addSubcategory(categoryId, subcategoryName);
+    }
 
+    @PostMapping("income/category/add")
+    @Operation(summary = "Uue tulukategooria lisamine kasutajale",
+            description = "Võtab sisendiks kasutaja id ja kasutaja pandud tulugrupi nime, salvestab uue Category andmebaasi")
+    public void addIncomeCategory(Integer userId, String categoryName) {
+        categoryService.addIncomeCategory(userId, categoryName);
+    }
 
-    // TODO: 14.09.2022  : uue subcategory lisamine (categoryId ja subcategoryName)
-    // TODO: 14.09.2022 : uue kategooria lisamine (userId categoryName 
-    
-    
+    @PostMapping("expense/category/add")
+    @Operation(summary = "Uue kulukategooria lisamine kasutajale",
+            description = "Võtab sisendiks kasutaja id ja kasutaja pandud kulugrupi nime, salvestab uue Category andmebaasi")
+    public void addExpenseCategory(Integer userId, String categoryName) {
+        categoryService.addExpenseCategory(userId, categoryName);
+    }
+
     
     
 //    public void updateCategoryInfo(@RequestBody CategoryChangeRequest request) {
