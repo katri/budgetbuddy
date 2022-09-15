@@ -32,8 +32,8 @@ public class SetupController {
     }
 
     @PostMapping("subcategory/add")
-    @Operation(summary = "Uue subkategooria lisamine kasutajale kategooria alla. Loob kategooria ja subkategooria seose CategoryRelations tabelissse",
-            description = " ")
+    @Operation(summary = "Uue subkategooria lisamine kasutajale kategooria alla",
+            description = "Võtab sisendiks kategooriaId ja kasutaja pandud subkategooria nime. Loob kategooria ja subkategooria seose CategoryRelations tabelissse")
     public void addSubcategory(Integer categoryId, String subcategoryName) {
         categoryService.addSubcategory(categoryId, subcategoryName);
     }
