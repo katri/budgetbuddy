@@ -42,5 +42,4 @@ public class LoginService {
         List<Subcategory> subcategories = subcategoryService.createAndSaveSubcategories();
         categoryRelationService.createAndSaveCategoryRelations(categories, subcategories);
     }
-
 }

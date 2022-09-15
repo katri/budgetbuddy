@@ -2,6 +2,7 @@ package ee.bcs.budgetbuddy.domain.category;
 
 import ee.bcs.budgetbuddy.domain.standardCategory.StandardCategoryRelation;
 import ee.bcs.budgetbuddy.domain.standardCategory.StandardCategoryRelationRepository;
+import ee.bcs.budgetbuddy.domain.standardCategory.StandardCategoryRelationService;
 import ee.bcs.budgetbuddy.domain.subcategory.Subcategory;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +17,7 @@ public class CategoryRelationService {
     private CategoryRelationRepository categoryRelationRepository;
 
     @Resource
-    private StandardCategoryRelationRepository standardCategoryRelationRepository;
+    private StandardCategoryRelationService standardCategoryRelationService;
 
 
     public void createAndSaveCategoryRelations(List<Category> categories, List<Subcategory> subcategories) {
@@ -26,8 +27,7 @@ public class CategoryRelationService {
 
     private List<CategoryRelation> createCategoryRelations(List<Category> categories, List<Subcategory> subcategories) {
         List<CategoryRelation> categoryRelations = new ArrayList<>();
-
-        List<StandardCategoryRelation> standardRelations = standardCategoryRelationRepository.findAll();
+        List<StandardCategoryRelation> standardRelations = standardCategoryRelationService.findAll();
         for (StandardCategoryRelation standardRelation : standardRelations) {
             Category category = getCategory(categories, standardRelation);
             Subcategory subcategory = getSubcategory(subcategories, standardRelation);
@@ -37,6 +37,8 @@ public class CategoryRelationService {
 
         return categoryRelations;
     }
+
+
 
     private Category getCategory(List<Category> categories, StandardCategoryRelation standardRelation) {
         String categoryName = standardRelation.getStandardCategory().getName();
@@ -78,4 +80,16 @@ public class CategoryRelationService {
         return categoryRelation;
     }
 
+    public void addCategoryRelation(Category category, Subcategory subcategory) {
+        CategoryRelation categoryRelation = new CategoryRelation();
+        categoryRelation.setCategory(category);
+        categoryRelation.setSubcategory(subcategory);
+        categoryRelation.setIsActive(true);
+        categoryRelationRepository.save(categoryRelation);
+    }
+
+    public List<CategoryRelation> findSubCategoriesBy(Integer categoryId) {
+        return categoryRelationRepository.findSubCategoriesBy(categoryId);
+    }
 }
+

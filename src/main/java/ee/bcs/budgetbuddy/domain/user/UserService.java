@@ -6,6 +6,7 @@ import ee.bcs.budgetbuddy.validation.ValidationService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -26,4 +27,7 @@ public class UserService {
         return user;
     }
 
+    public User findById(Integer userId) {
+        return userRepository.findById(userId).get();
+    }
 }

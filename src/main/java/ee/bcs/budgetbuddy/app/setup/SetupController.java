@@ -1,6 +1,7 @@
 package ee.bcs.budgetbuddy.app.setup;
 
 import ee.bcs.budgetbuddy.domain.category.CategoryService;
+import ee.bcs.budgetbuddy.domain.subcategory.SubcategoryService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,6 +13,9 @@ public class SetupController {
 
     @Resource
     private CategoryService categoryService;
+
+    @Resource
+    private SubcategoryService subcategoryService;
 
     @GetMapping("/categories/income")
     @Operation(summary = "Ühe kasutaja tulukategooriate ja subkategooriate kuvamine",
@@ -33,7 +37,7 @@ public class SetupController {
     @Operation(summary = "Uue subkategooria lisamine kasutajale kategooria alla",
             description = "Võtab sisendiks kategooriaId ja kasutaja pandud subkategooria nime. Loob kategooria ja subkategooria seose CategoryRelations tabelissse")
     public void addSubcategory(Integer categoryId, String subcategoryName) {
-        categoryService.addSubcategory(categoryId, subcategoryName);
+        subcategoryService.addSubcategory(categoryId, subcategoryName);
     }
 
     @PostMapping("category/income/add")
