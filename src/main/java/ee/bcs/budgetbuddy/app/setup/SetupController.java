@@ -62,6 +62,13 @@ public class SetupController {
         categoryService.changeCategoryName(request);
     }
 
+    @PatchMapping("subcategory/update")
+    @Operation(summary = "Subkategooria nime muutmine",
+            description = "")
+    public void updateSubcategoryName(Integer subcategoryId, String subcategoryName) {
+        subcategoryService.updateSubcategoryName(subcategoryId, subcategoryName);
+    }
+
 //    @PostMapping("category/inactive")
 //    @Operation(summary = "Kategooria kustutamine",
 //            description = "")

@@ -59,4 +59,10 @@ public class SubcategoryService {
         Subcategory lastSubCategory = subcategoryRepository.findFirstByOrderBySequenceDesc();
         return lastSubCategory.getSequence() + 1;
     }
+
+    public void updateSubcategoryName(Integer subcategoryId, String subcategoryName) {
+        Subcategory subcategory = subcategoryRepository.getReferenceById(subcategoryId);
+        subcategory.setName(subcategoryName);
+        subcategoryRepository.save(subcategory);
+    }
 }
