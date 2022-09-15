@@ -1,5 +1,6 @@
 package ee.bcs.budgetbuddy.domain.category;
 
+import ee.bcs.budgetbuddy.app.setup.CategoryChangeRequest;
 import ee.bcs.budgetbuddy.app.setup.CategoryInfo;
 import ee.bcs.budgetbuddy.app.setup.SetupResponse;
 import ee.bcs.budgetbuddy.app.setup.SubcategoryInfo;
@@ -102,13 +103,30 @@ public class CategoryService {
         categoryRepository.save(category);
     }
 
+    public Category findById(Integer categoryId) {
+        return categoryRepository.findById(categoryId).get();
+    }
+
     private Integer getNextSequenceNumber() {
         Category lastCategory = categoryRepository.findFirstByOrderBySequenceDesc();
         return lastCategory.getSequence() + 1;
     }
-    public Category findById(Integer categoryId) {
-        return categoryRepository.findById(categoryId).get();
 
-
+    public void changeCategoryName(CategoryChangeRequest request) {
+        Category categoryData = categoryMapper.categoryChangeRequestToCategory(request);
+        Integer categoryId = categoryData.getId();
+        Category category = categoryRepository.getReferenceById(categoryId);
+        category.setName(categoryData.getName());
+        categoryRepository.save(category);
     }
+
+//    public void deleteCategory(CategoryChangeRequest request) {
+//        //  Category category = categoryMapper.categoryChangeRequestToCategory(request);
+////         List<CategoryRelation> categoryRelations = categoryRelationsMapper.categoryChangeRequestToCategories(request);
+//         CategoryRelation categoryRelation = categoryRelationsMapper.categoryChangeRequestToCategory(request);
+//        for (CategoryRelation categoryRelation : categoryRelations) {
+//            categoryRelation.setIsActive(false); // kuidas ma tegelikult selle siit sõnumist kätte saan?
+//        }
+//        categoryRelationService.saveAll(categoryRelations);
+//    }
 }

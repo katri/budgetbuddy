@@ -55,13 +55,19 @@ public class SetupController {
     }
 
 
-//    @PostMapping("category/update")
-//    @Operation(summary = "Kategooria info värskendamine",
-//            description = "")
-//    public void updateCategoryInfo(@RequestBody CategoryChangeRequest request) {
-//        categoryService.updateCategoryInfo(request);
-//    }
+    @PostMapping("category/update")
+    @Operation(summary = "Kategooria info värskendamine",
+            description = "")
+    public void updateCategoryInfo(@RequestBody CategoryChangeRequest request) {
+        categoryService.changeCategoryName(request);
+    }
 
+//    @PostMapping("category/inactive")
+//    @Operation(summary = "Kategooria kustutamine",
+//            description = "")
+//    public void deleteCategory(@RequestBody CategoryChangeRequest request) {
+//        categoryService.deleteCategory(request);
+//    }
 
 }
 

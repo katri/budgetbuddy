@@ -1,7 +1,6 @@
 package ee.bcs.budgetbuddy.domain.category;
 
 import ee.bcs.budgetbuddy.domain.standardCategory.StandardCategoryRelation;
-import ee.bcs.budgetbuddy.domain.standardCategory.StandardCategoryRelationRepository;
 import ee.bcs.budgetbuddy.domain.standardCategory.StandardCategoryRelationService;
 import ee.bcs.budgetbuddy.domain.subcategory.Subcategory;
 import org.springframework.stereotype.Service;
@@ -39,11 +38,9 @@ public class CategoryRelationService {
     }
 
 
-
     private Category getCategory(List<Category> categories, StandardCategoryRelation standardRelation) {
         String categoryName = standardRelation.getStandardCategory().getName();
-        Category category = getCategoryByName(categories, categoryName);
-        return category;
+        return getCategoryByName(categories, categoryName);
     }
 
     private Category getCategoryByName(List<Category> categories, String categoryName) {
@@ -58,8 +55,7 @@ public class CategoryRelationService {
 
     private Subcategory getSubcategory(List<Subcategory> subcategories, StandardCategoryRelation standardRelation) {
         String subcategoryName = standardRelation.getStandardSubcategory().getName();
-        Subcategory subcategory = getSubcategoryByName(subcategories, subcategoryName);
-        return subcategory;
+        return getSubcategoryByName(subcategories, subcategoryName);
     }
 
     private Subcategory getSubcategoryByName(List<Subcategory> subcategories, String subcategoryName) {
@@ -90,6 +86,10 @@ public class CategoryRelationService {
 
     public List<CategoryRelation> findSubCategoriesBy(Integer categoryId) {
         return categoryRelationRepository.findSubCategoriesBy(categoryId);
+    }
+
+    public void saveAll(List<CategoryRelation> categoryRelations) {
+        categoryRelationRepository.saveAll(categoryRelations);
     }
 }
 
