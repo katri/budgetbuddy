@@ -99,17 +99,22 @@ public class CategoryService {
     }
 
     private Subcategory createNewSubcategory(String subcategoryName, Optional<Category> category) {
-        Subcategory lastSubCategory = subcategoryRepository.findFirstByOrderByIdDesc();
         Subcategory subcategory = new Subcategory();
         subcategory.setName(subcategoryName);
 
         // TODO: https://stackoverflow.com/questions/50871759/spring-data-get-last-record-from-the-table
         // TODO: leidsin lahenduse googledades "java jpa repository last id"
-        subcategory.setSequence(20); // kuidas seda saada?
+        subcategory.setSequence(getNextSequenceNumber()); // kuidas seda saada?
         subcategory.setType(category.get().getType());
         subcategoryRepository.save(subcategory);
         return subcategory;
     }
+
+    private Integer getNextSequenceNumber() {
+        Subcategory lastSubCategory = subcategoryRepository.findFirstByOrderByIdDesc();
+        return lastSubCategory.getSequence() + 1;
+    }
+
     private void createNewCategoryRelation(Optional<Category> category, Subcategory subcategory) {
         CategoryRelation categoryRelation = new CategoryRelation();
         categoryRelation.setCategory(category.get());
@@ -122,10 +127,12 @@ public class CategoryService {
         Optional<User> user = userRepository.findById(userId);
         createNewCategory(categoryName, user, INCOME);
     }
+
     public void addExpenseCategory(Integer userId, String categoryName) {
         Optional<User> user = userRepository.findById(userId);
         createNewCategory(categoryName, user, EXPENSE);
     }
+
     private void createNewCategory(String categoryName, Optional<User> user, String type) {
         Category category = new Category();
         category.setUser(user.get());
