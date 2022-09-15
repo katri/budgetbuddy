@@ -5,8 +5,6 @@ import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.List;
 
 @RestController
 @RequestMapping("/setup")
@@ -38,25 +36,29 @@ public class SetupController {
         categoryService.addSubcategory(categoryId, subcategoryName);
     }
 
-    @PostMapping("income/category/add")
+    @PostMapping("category/income/add")
     @Operation(summary = "Uue tulukategooria lisamine kasutajale",
             description = "Võtab sisendiks kasutaja id ja kasutaja pandud tulugrupi nime, salvestab uue Category andmebaasi")
     public void addIncomeCategory(Integer userId, String categoryName) {
         categoryService.addIncomeCategory(userId, categoryName);
     }
 
-    @PostMapping("expense/category/add")
+    @PostMapping("category/expense/add")
     @Operation(summary = "Uue kulukategooria lisamine kasutajale",
             description = "Võtab sisendiks kasutaja id ja kasutaja pandud kulugrupi nime, salvestab uue Category andmebaasi")
     public void addExpenseCategory(Integer userId, String categoryName) {
         categoryService.addExpenseCategory(userId, categoryName);
     }
 
-    
-    
+
+//    @PostMapping("category/update")
+//    @Operation(summary = "Kategooria info värskendamine",
+//            description = "")
 //    public void updateCategoryInfo(@RequestBody CategoryChangeRequest request) {
 //        categoryService.updateCategoryInfo(request);
 //    }
+
+
 }
 
 
