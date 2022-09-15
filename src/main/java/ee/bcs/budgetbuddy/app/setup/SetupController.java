@@ -55,11 +55,11 @@ public class SetupController {
     }
 
 
-    @PostMapping("category/update")
-    @Operation(summary = "Kategooria info värskendamine",
+    @PatchMapping("category/update")
+    @Operation(summary = "Kategooria nime muutmine",
             description = "")
-    public void updateCategoryInfo(@RequestBody CategoryChangeRequest request) {
-        categoryService.changeCategoryName(request);
+    public void updateCategoryInfo(Integer categoryId, String categoryName) {
+        categoryService.updateCategoryName(categoryId, categoryName);
     }
 
     @PatchMapping("subcategory/update")

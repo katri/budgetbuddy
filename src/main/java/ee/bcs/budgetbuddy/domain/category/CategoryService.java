@@ -6,6 +6,7 @@ import ee.bcs.budgetbuddy.app.setup.SetupResponse;
 import ee.bcs.budgetbuddy.app.setup.SubcategoryInfo;
 import ee.bcs.budgetbuddy.domain.standardCategory.StandardCategory;
 import ee.bcs.budgetbuddy.domain.standardCategory.StandardCategoryService;
+import ee.bcs.budgetbuddy.domain.subcategory.Subcategory;
 import ee.bcs.budgetbuddy.domain.user.User;
 import ee.bcs.budgetbuddy.domain.user.UserService;
 import org.springframework.stereotype.Service;
@@ -112,13 +113,13 @@ public class CategoryService {
         return lastCategory.getSequence() + 1;
     }
 
-    public void changeCategoryName(CategoryChangeRequest request) {
-        Category categoryData = categoryMapper.categoryChangeRequestToCategory(request);
-        Integer categoryId = categoryData.getId();
-        Category category = categoryRepository.getReferenceById(categoryId);
-        category.setName(categoryData.getName());
+    public void updateCategoryName(Integer categoryId, String categoryName) {
+        Category category  = categoryRepository.getReferenceById(categoryId);
+        category.setName(categoryName);
         categoryRepository.save(category);
     }
+
+
 
 //    public void deleteCategory(CategoryChangeRequest request) {
 //        //  Category category = categoryMapper.categoryChangeRequestToCategory(request);
