@@ -12,6 +12,9 @@ import javax.annotation.Resource;
 public class SetupController {
 
     @Resource
+    private SetupService setupService;
+
+    @Resource
     private CategoryService categoryService;
 
     @Resource
@@ -54,11 +57,10 @@ public class SetupController {
         categoryService.addExpenseCategory(userId, categoryName);
     }
 
-
     @PatchMapping("category/update")
     @Operation(summary = "Kategooria nime muutmine",
             description = "")
-    public void updateCategoryInfo(Integer categoryId, String categoryName) {
+    public void updateCategoryName(Integer categoryId, String categoryName) {
         categoryService.updateCategoryName(categoryId, categoryName);
     }
 

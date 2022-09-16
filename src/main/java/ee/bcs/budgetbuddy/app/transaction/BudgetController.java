@@ -9,7 +9,7 @@ import javax.annotation.Resource;
 
 @RestController
 @RequestMapping("/transaction")
-public class TransactionController {
+public class BudgetController {
 
     @Resource
     private AccountService accountService;

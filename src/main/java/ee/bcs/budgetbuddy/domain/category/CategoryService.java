@@ -1,12 +1,10 @@
 package ee.bcs.budgetbuddy.domain.category;
 
-import ee.bcs.budgetbuddy.app.setup.CategoryChangeRequest;
 import ee.bcs.budgetbuddy.app.setup.CategoryInfo;
 import ee.bcs.budgetbuddy.app.setup.SetupResponse;
 import ee.bcs.budgetbuddy.app.setup.SubcategoryInfo;
 import ee.bcs.budgetbuddy.domain.standardCategory.StandardCategory;
 import ee.bcs.budgetbuddy.domain.standardCategory.StandardCategoryService;
-import ee.bcs.budgetbuddy.domain.subcategory.Subcategory;
 import ee.bcs.budgetbuddy.domain.user.User;
 import ee.bcs.budgetbuddy.domain.user.UserService;
 import org.springframework.stereotype.Service;
@@ -25,20 +23,19 @@ public class CategoryService {
     private StandardCategoryService standardCategoryService;
 
     @Resource
-    private CategoryMapper categoryMapper;
-
-    @Resource
-    private CategoryRepository categoryRepository;
-
-    @Resource
     private CategoryRelationService categoryRelationService;
+
+    @Resource
+    private UserService userService;
+
+    @Resource
+    private CategoryMapper categoryMapper;
 
     @Resource
     private CategoryRelationsMapper categoryRelationsMapper;
 
     @Resource
-    private UserService userService;
-
+    private CategoryRepository categoryRepository;
 
     public List<Category> createAndSaveCategories(User user) {
         List<StandardCategory> standardCategories = standardCategoryService.findAllStandardCategories();
@@ -56,9 +53,7 @@ public class CategoryService {
 
     public SetupResponse getIncomeCategoriesSetup(Integer userId) {
         List<CategoryInfo> categoryInfos = createCategoryInfos(userId, INCOME);
-        for (CategoryInfo categoryInfo : categoryInfos) {
-            addSubcategory(categoryInfo);
-        }
+        addSubcategorytoCategoryInfos(categoryInfos);
         SetupResponse setupResponse = new SetupResponse();
         setupResponse.setCategories(categoryInfos);
         return setupResponse;
@@ -66,12 +61,36 @@ public class CategoryService {
 
     public SetupResponse getExpenseCategoriesSetup(Integer userId) {
         List<CategoryInfo> categoryInfos = createCategoryInfos(userId, EXPENSE);
-        for (CategoryInfo categoryInfo : categoryInfos) {
-            addSubcategory(categoryInfo);
-        }
+        addSubcategorytoCategoryInfos(categoryInfos);
         SetupResponse setupResponse = new SetupResponse();
         setupResponse.setCategories(categoryInfos);
         return setupResponse;
+    }
+
+    public void addIncomeCategory(Integer userId, String categoryName) {
+        User user = userService.findById(userId);
+        createNewCategory(categoryName, user, INCOME);
+    }
+
+    public void addExpenseCategory(Integer userId, String categoryName) {
+        User user = userService.findById(userId);
+        createNewCategory(categoryName, user, EXPENSE);
+    }
+
+    public Category findById(Integer categoryId) {
+        return categoryRepository.findById(categoryId).get();
+    }
+
+    public void updateCategoryName(Integer categoryId, String categoryName) {
+        Category category = categoryRepository.getReferenceById(categoryId);
+        category.setName(categoryName);
+        categoryRepository.save(category);
+    }
+
+    private void addSubcategorytoCategoryInfos(List<CategoryInfo> categoryInfos) {
+        for (CategoryInfo categoryInfo : categoryInfos) {
+            addSubcategory(categoryInfo);
+        }
     }
 
     private List<CategoryInfo> createCategoryInfos(Integer userId, String type) {
@@ -85,16 +104,6 @@ public class CategoryService {
         categoryInfo.setSubcategories(subcategories);
     }
 
-    public void addIncomeCategory(Integer userId, String categoryName) {
-        User user = userService.findById(userId);
-        createNewCategory(categoryName, user, INCOME);
-    }
-
-    public void addExpenseCategory(Integer userId, String categoryName) {
-        User user = userService.findById(userId);
-        createNewCategory(categoryName, user, EXPENSE);
-    }
-
     private void createNewCategory(String categoryName, User user, String type) {
         Category category = new Category();
         category.setUser(user);
@@ -104,19 +113,9 @@ public class CategoryService {
         categoryRepository.save(category);
     }
 
-    public Category findById(Integer categoryId) {
-        return categoryRepository.findById(categoryId).get();
-    }
-
     private Integer getNextSequenceNumber() {
         Category lastCategory = categoryRepository.findFirstByOrderBySequenceDesc();
         return lastCategory.getSequence() + 1;
-    }
-
-    public void updateCategoryName(Integer categoryId, String categoryName) {
-        Category category  = categoryRepository.getReferenceById(categoryId);
-        category.setName(categoryName);
-        categoryRepository.save(category);
     }
 
 
