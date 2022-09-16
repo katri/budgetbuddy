@@ -1,5 +1,6 @@
 package ee.bcs.budgetbuddy.domain.category;
 
+import ee.bcs.budgetbuddy.app.setup.CategoryChangeRequest;
 import ee.bcs.budgetbuddy.app.setup.CategoryInfo;
 import ee.bcs.budgetbuddy.domain.standardCategory.StandardCategory;
 import org.mapstruct.Mapper;
@@ -20,5 +21,9 @@ public interface CategoryMapper {
     CategoryInfo CategoryToCategoryInfo(Category category);
 
     List<CategoryInfo> categoriesToCategoryInfos(List<Category> categories);
+
+    @Mapping(target = "id", source = "categoryId")
+    @Mapping(target = "name", source = "categoryName")
+    Category categoryChangeRequestToCategory(CategoryChangeRequest request);
 
 }

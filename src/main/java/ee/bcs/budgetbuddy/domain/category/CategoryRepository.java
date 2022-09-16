@@ -12,4 +12,5 @@ public interface CategoryRepository extends JpaRepository<ee.bcs.budgetbuddy.dom
     @Query("select c from Category c where c.user.id = ?1 and c.type = ?2 order by c.sequence")
     List<Category> findCategoriesBy(Integer id, String type);
 
+    Category findFirstByOrderBySequenceDesc();
 }
