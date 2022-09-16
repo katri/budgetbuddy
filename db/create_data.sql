@@ -160,3 +160,6 @@ INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUE
 INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 3, 10, true);
 INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 3, 11, true);
 
+INSERT INTO transaction (id, user_id,sender_account_id,receiver_account_id,date,subcategory_id,description,amount,type,is_active) VALUES (DEFAULT,1,1,NULL,'2022-09-01',5,'Selver',10,'e',true);
+INSERT INTO transaction (id, user_id,sender_account_id,receiver_account_id,date,subcategory_id,description,amount,type,is_active) VALUES (DEFAULT,1,1,NULL,'2022-09-02',5,'Rimi',7.50,'e',true);
+INSERT INTO transaction (id, user_id,sender_account_id,receiver_account_id,date,subcategory_id,description,amount,type,is_active) VALUES (DEFAULT,1,1,NULL,'2022-09-05',5,'Selver toit',45.70,'e',true);
