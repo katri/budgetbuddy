@@ -15,6 +15,10 @@ public class ReportService {
 
     public Float calculateSubcategorySumInMonth(Integer month, Integer subcategoryId) {
         List<Transaction> transactions = transactionService.findTransactionsBy(month, subcategoryId);
+        return calculateSumof(transactions);
+    }
+
+    private static Float calculateSumof(List<Transaction> transactions) {
         Float monthSubcategorySum = 0F;
         for (Transaction transaction : transactions) {
             monthSubcategorySum = monthSubcategorySum + transaction.getAmount();
