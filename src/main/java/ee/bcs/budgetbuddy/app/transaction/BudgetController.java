@@ -35,7 +35,7 @@ public class BudgetController {
         accountService.updateAccountStatus(accountId, isActive);
     }
 
-//    @PostMapping("/account/add")
+//    @PostMapping("/transaction/add")
 //    @Operation(summary = "Uue kande lisamine kasutajale",
 //            description = "Lisab kasutajale uue kande vastavalit sisestatud andmetele")
 //    public void addNewTransaction(@RequestBody TransactionRequest transactionRequest) {
