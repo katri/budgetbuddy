@@ -14,8 +14,14 @@ public class SetupService {
     private CategoryService categoryService;
 
     @Resource
+    private SubcategoryService subcategoryService;
+
+    @Resource
     private CategoryRelationService categoryRelationService;
 
+    public void addSubcategory(Integer categoryId, String subcategoryName) {
+        subcategoryService.addSubcategory(categoryId, subcategoryName);
+    }
 
     public void updateCategoryIsActiveStatus(Integer categoryId, Boolean isActive) {
         categoryService.updateCategoryIsActiveStatus(categoryId, isActive);
@@ -23,5 +29,29 @@ public class SetupService {
 
     public void updateSubcategoryIsActiveStatus(Integer subcategoryId, Boolean isActive) {
         categoryRelationService.updateSubcategoryIsActiveStatus(subcategoryId, isActive);
+    }
+
+    public void updateSubcategoryName(Integer subcategoryId, String subcategoryName) {
+        subcategoryService.updateSubcategoryName(subcategoryId, subcategoryName);
+    }
+
+    public SetupResponse getIncomeCategoriesSetup(Integer userId) {
+        return categoryService.getIncomeCategoriesSetup(userId);
+    }
+
+    public SetupResponse getExpenseCategoriesSetup(Integer userId) {
+        return categoryService.getExpenseCategoriesSetup(userId);
+    }
+
+    public void addIncomeCategory(Integer userId, String categoryName) {
+        categoryService.addIncomeCategory(userId, categoryName);
+    }
+
+    public void addExpenseCategory(Integer userId, String categoryName) {
+        categoryService.addExpenseCategory(userId, categoryName);
+    }
+
+    public void updateCategoryName(Integer categoryId, String categoryName) {
+        categoryService.updateCategoryName(categoryId, categoryName);
     }
 }

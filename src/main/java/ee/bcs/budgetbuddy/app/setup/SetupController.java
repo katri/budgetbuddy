@@ -1,7 +1,5 @@
 package ee.bcs.budgetbuddy.app.setup;
 
-import ee.bcs.budgetbuddy.domain.category.CategoryService;
-import ee.bcs.budgetbuddy.domain.subcategory.SubcategoryService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,18 +12,12 @@ public class SetupController {
     @Resource
     private SetupService setupService;
 
-    @Resource
-    private CategoryService categoryService;
-
-    @Resource
-    private SubcategoryService subcategoryService;
-
     @GetMapping("/categories/income")
     @Operation(summary = "Ühe kasutaja tulukategooriate ja subkategooriate kuvamine",
             description = "Võetakse sisse kasutaja info, leitakse üles kasutaja kõik tulukategooriad (type i), " +
                     "seejärel leitakse CategoryMapperi abil subkategooriad ja tagastatakse kogu info SetupResponse sõnumis")
     public SetupResponse getIncomeCategoriesSetup(Integer userId) {
-        return categoryService.getIncomeCategoriesSetup(userId);
+        return setupService.getIncomeCategoriesSetup(userId);
     }
 
     @GetMapping("/categories/expense")
@@ -33,42 +25,42 @@ public class SetupController {
             description = "Võetakse sisse kasutaja info, leitakse üles kasutaja kõik kulukategooriad (type o), " +
                     "seejärel leitakse CategoryMapperi abil subkategooriad ja tagastatakse kogu info SetupResponse sõnumis")
     public SetupResponse getExpenseCategoriesSetup(Integer userId) {
-        return categoryService.getExpenseCategoriesSetup(userId);
+        return setupService.getExpenseCategoriesSetup(userId);
     }
 
     @PostMapping("/subcategory/add")
     @Operation(summary = "Uue subkategooria lisamine kasutajale kategooria alla",
             description = "Võtab sisendiks kategooriaId ja kasutaja pandud subkategooria nime. Loob kategooria ja subkategooria seose CategoryRelations tabelissse")
     public void addSubcategory(Integer categoryId, String subcategoryName) {
-        subcategoryService.addSubcategory(categoryId, subcategoryName);
+        setupService.addSubcategory(categoryId, subcategoryName);
     }
 
     @PostMapping("/category/income/add")
     @Operation(summary = "Uue tulukategooria lisamine kasutajale",
             description = "Võtab sisendiks kasutaja id ja kasutaja pandud tulugrupi nime, salvestab uue Category andmebaasi")
     public void addIncomeCategory(Integer userId, String categoryName) {
-        categoryService.addIncomeCategory(userId, categoryName);
+        setupService.addIncomeCategory(userId, categoryName);
     }
 
     @PostMapping("/category/expense/add")
     @Operation(summary = "Uue kulukategooria lisamine kasutajale",
             description = "Võtab sisendiks kasutaja id ja kasutaja pandud kulugrupi nime, salvestab uue Category andmebaasi")
     public void addExpenseCategory(Integer userId, String categoryName) {
-        categoryService.addExpenseCategory(userId, categoryName);
+        setupService.addExpenseCategory(userId, categoryName);
     }
 
     @PatchMapping("/category/update")
     @Operation(summary = "Kategooria nime muutmine",
             description = "")
     public void updateCategoryName(Integer categoryId, String categoryName) {
-        categoryService.updateCategoryName(categoryId, categoryName);
+        setupService.updateCategoryName(categoryId, categoryName);
     }
 
     @PatchMapping("/subcategory/update")
     @Operation(summary = "Subkategooria nime muutmine",
             description = "")
     public void updateSubcategoryName(Integer subcategoryId, String subcategoryName) {
-        subcategoryService.updateSubcategoryName(subcategoryId, subcategoryName);
+        setupService.updateSubcategoryName(subcategoryId, subcategoryName);
     }
 
     @PatchMapping("/category/status")

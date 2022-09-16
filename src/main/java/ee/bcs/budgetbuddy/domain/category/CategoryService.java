@@ -5,6 +5,7 @@ import ee.bcs.budgetbuddy.app.setup.SetupResponse;
 import ee.bcs.budgetbuddy.app.setup.SubcategoryInfo;
 import ee.bcs.budgetbuddy.domain.standardCategory.StandardCategory;
 import ee.bcs.budgetbuddy.domain.standardCategory.StandardCategoryService;
+import ee.bcs.budgetbuddy.domain.subcategory.SubcategoryService;
 import ee.bcs.budgetbuddy.domain.user.User;
 import ee.bcs.budgetbuddy.domain.user.UserService;
 import org.springframework.stereotype.Service;
@@ -21,6 +22,7 @@ public class CategoryService {
 
     @Resource
     private StandardCategoryService standardCategoryService;
+
 
     @Resource
     private CategoryRelationService categoryRelationService;
@@ -87,6 +89,15 @@ public class CategoryService {
         categoryRepository.save(category);
     }
 
+    public void updateCategoryIsActiveStatus(Integer categoryId, Boolean isActive) {
+        List<CategoryRelation> categoryRelations = categoryRelationService.findAllRelationsForCategory(categoryId);
+        for (CategoryRelation categoryRelation : categoryRelations) {
+            categoryRelation.setIsActive(isActive);
+        }
+        categoryRelationService.saveAll(categoryRelations);
+    }
+
+
     private void addSubcategorytoCategoryInfos(List<CategoryInfo> categoryInfos) {
         for (CategoryInfo categoryInfo : categoryInfos) {
             addSubcategory(categoryInfo);
@@ -117,24 +128,4 @@ public class CategoryService {
         Category lastCategory = categoryRepository.findFirstByOrderBySequenceDesc();
         return lastCategory.getSequence() + 1;
     }
-
-    public void updateCategoryIsActiveStatus(Integer categoryId, Boolean isActive) {
-        List<CategoryRelation> categoryRelations = categoryRelationService.findAllRelationsForCategory(categoryId);
-        for (CategoryRelation categoryRelation : categoryRelations) {
-            categoryRelation.setIsActive(isActive);
-        }
-        categoryRelationService.saveAll(categoryRelations);
-
-    }
-
-
-//    public void deleteCategory(CategoryChangeRequest request) {
-//        //  Category category = categoryMapper.categoryChangeRequestToCategory(request);
-////         List<CategoryRelation> categoryRelations = categoryRelationsMapper.categoryChangeRequestToCategories(request);
-//         CategoryRelation categoryRelation = categoryRelationsMapper.categoryChangeRequestToCategory(request);
-//        for (CategoryRelation categoryRelation : categoryRelations) {
-//            categoryRelation.setIsActive(false); // kuidas ma tegelikult selle siit sõnumist kätte saan?
-//        }
-//        categoryRelationService.saveAll(categoryRelations);
-//    }
 }
