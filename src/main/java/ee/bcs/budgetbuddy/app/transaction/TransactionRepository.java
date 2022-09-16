@@ -12,10 +12,6 @@ public interface TransactionRepository extends JpaRepository<Transaction, Intege
     List<Transaction> findTransactionsBy(Integer accountId);
 
 
-
-    // @Query("select t from Transaction t where t.date = ?1 and t.subcategory.id = ?2")
-
-   // @Query("select t from Transaction t where t.date = ?1 and t.subcategory.id = ?2")
     @Query("select t from Transaction t where EXTRACT(MONTH from t.date) =?1 AND t.subcategory.id =?2")
     List<Transaction> findTransactionsBy(Integer month, Integer subcategoryId);
 }
