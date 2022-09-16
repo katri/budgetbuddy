@@ -1,7 +1,17 @@
 package ee.bcs.budgetbuddy.app.transaction;
 
-import javax.annotation.Resource;
+import org.springframework.stereotype.Service;
 
-@Resource
+import javax.annotation.Resource;
+import java.util.List;
+
+@Service
 public class BudgetService {
+
+   @Resource
+   private TransactionService transactionService;
+
+    public List<TransactionInfo> findTransactions(Integer accountId) {
+        return transactionService.findTransactions(accountId);
+    }
 }

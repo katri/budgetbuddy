@@ -6,6 +6,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @RestController
 @RequestMapping("/budget")
@@ -13,6 +14,9 @@ public class BudgetController {
 
     @Resource
     private AccountService accountService;
+
+    @Resource
+    private BudgetService budgetService;
 
     @PostMapping("/account/add")
     @Operation(summary = "Uue konto lisamine kasutajale",
@@ -38,7 +42,15 @@ public class BudgetController {
 //    @PostMapping("/transaction/add")
 //    @Operation(summary = "Uue kande lisamine kasutajale",
 //            description = "Lisab kasutajale uue kande vastavalit sisestatud andmetele")
-//    public void addNewTransaction(@RequestBody TransactionRequest transactionRequest) {
-//
+//    public List<TransactionInfo> addNewTransaction(@RequestBody TransactionInfo transactionRequest) {
 //    }
+
+    @GetMapping("transaction/all")
+    @Operation(summary = "Kõikide kannete lisiti kuvamine")
+    public List<TransactionInfo> findTransactions(Integer accountId) {
+        return budgetService.findTransactions(accountId);
+    }
+
+
+
 }

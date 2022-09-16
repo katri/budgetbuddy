@@ -61,5 +61,102 @@ INSERT INTO account_type (id, name, description) VALUES (DEFAULT, 'Muu laen', 'M
 INSERT INTO account (id, user_id, account_type_id, name, description, balance) VALUES (DEFAULT, 1, 1, 'Konto LHV pangas', 'Minu konto LHV pangas', 100);
 INSERT INTO account (id, user_id, account_type_id, name, description, balance) VALUES (DEFAULT, 1, 3, 'Swedbank krediitkaart', 'Kredekas', 0);
 
+INSERT INTO category (id, user_id, name, sequence, type) VALUES (DEFAULT, 1, 'Aktiivsed tulud', 1, 'i');
+INSERT INTO category (id, user_id, name, sequence, type) VALUES (DEFAULT, 1, 'Passiivsed tulud', 2, 'i');
+INSERT INTO category (id, user_id, name, sequence, type) VALUES (DEFAULT, 1, 'Vältimatud kulud', 3, 'e');
+INSERT INTO category (id, user_id, name, sequence, type) VALUES (DEFAULT, 1, 'Eluase', 4, 'e');
+INSERT INTO category (id, user_id, name, sequence, type) VALUES (DEFAULT, 1, 'Hooajalised kulud', 5, 'e');
+INSERT INTO category (id, user_id, name, sequence, type) VALUES (DEFAULT, 1, 'Elukvaliteet', 6, 'e');
+INSERT INTO category (id, user_id, name, sequence, type) VALUES (DEFAULT, 1, 'Lapsed', 7, 'e');
+INSERT INTO category (id, user_id, name, sequence, type) VALUES (DEFAULT, 1, 'Meelelahutus', 8, 'e');
 
+INSERT INTO subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Palk', 1, 'i');
+INSERT INTO subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Lastetoetus', 2, 'i');
+INSERT INTO subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Dividendid', 3, 'i');
+INSERT INTO subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Üüritulu', 4, 'i');
+INSERT INTO subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Toidupood', 5, 'e');
+INSERT INTO subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Transport', 6, 'e');
+INSERT INTO subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Lemmikloom', 7, 'e');
+INSERT INTO subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Telefon', 8, 'e');
+INSERT INTO subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Kodukulud', 9, 'e');
+INSERT INTO subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Ravikulud', 10, 'e');
+INSERT INTO subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Tasud ja viivised', 11, 'e');
+
+INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 1, 1, true);
+INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 1, 2, true);
+INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 2, 3, true);
+INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 2, 4, true);
+INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 3, 5, true);
+INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 3, 6, true);
+INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 3, 7, true);
+INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 3, 8, true);
+INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 3, 9, true);
+INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 3, 10, true);
+INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 3, 11, true);
+
+INSERT INTO category (id, user_id, name, sequence, type) VALUES (DEFAULT, 2, 'Aktiivsed tulud', 1, 'i');
+INSERT INTO category (id, user_id, name, sequence, type) VALUES (DEFAULT, 2, 'Passiivsed tulud', 2, 'i');
+INSERT INTO category (id, user_id, name, sequence, type) VALUES (DEFAULT, 2, 'Vältimatud kulud', 3, 'e');
+INSERT INTO category (id, user_id, name, sequence, type) VALUES (DEFAULT, 2, 'Eluase', 4, 'e');
+INSERT INTO category (id, user_id, name, sequence, type) VALUES (DEFAULT, 2, 'Hooajalised kulud', 5, 'e');
+INSERT INTO category (id, user_id, name, sequence, type) VALUES (DEFAULT, 2, 'Elukvaliteet', 6, 'e');
+INSERT INTO category (id, user_id, name, sequence, type) VALUES (DEFAULT, 2, 'Lapsed', 7, 'e');
+INSERT INTO category (id, user_id, name, sequence, type) VALUES (DEFAULT, 2, 'Meelelahutus', 8, 'e');
+
+INSERT INTO subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Palk', 1, 'i');
+INSERT INTO subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Lastetoetus', 2, 'i');
+INSERT INTO subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Dividendid', 3, 'i');
+INSERT INTO subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Üüritulu', 4, 'i');
+INSERT INTO subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Toidupood', 5, 'e');
+INSERT INTO subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Transport', 6, 'e');
+INSERT INTO subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Lemmikloom', 7, 'e');
+INSERT INTO subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Telefon', 8, 'e');
+INSERT INTO subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Kodukulud', 9, 'e');
+INSERT INTO subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Ravikulud', 10, 'e');
+INSERT INTO subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Tasud ja viivised', 11, 'e');
+
+INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 1, 1, true);
+INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 1, 2, true);
+INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 2, 3, true);
+INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 2, 4, true);
+INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 3, 5, true);
+INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 3, 6, true);
+INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 3, 7, true);
+INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 3, 8, true);
+INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 3, 9, true);
+INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 3, 10, true);
+INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 3, 11, true);
+
+INSERT INTO category (id, user_id, name, sequence, type) VALUES (DEFAULT, 3, 'Aktiivsed tulud', 1, 'i');
+INSERT INTO category (id, user_id, name, sequence, type) VALUES (DEFAULT, 3, 'Passiivsed tulud', 2, 'i');
+INSERT INTO category (id, user_id, name, sequence, type) VALUES (DEFAULT, 3, 'Vältimatud kulud', 3, 'e');
+INSERT INTO category (id, user_id, name, sequence, type) VALUES (DEFAULT, 3, 'Eluase', 4, 'e');
+INSERT INTO category (id, user_id, name, sequence, type) VALUES (DEFAULT, 3, 'Hooajalised kulud', 5, 'e');
+INSERT INTO category (id, user_id, name, sequence, type) VALUES (DEFAULT, 3, 'Elukvaliteet', 6, 'e');
+INSERT INTO category (id, user_id, name, sequence, type) VALUES (DEFAULT, 3, 'Lapsed', 7, 'e');
+INSERT INTO category (id, user_id, name, sequence, type) VALUES (DEFAULT, 3, 'Meelelahutus', 8, 'e');
+
+INSERT INTO subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Palk', 1, 'i');
+INSERT INTO subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Lastetoetus', 2, 'i');
+INSERT INTO subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Dividendid', 3, 'i');
+INSERT INTO subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Üüritulu', 4, 'i');
+INSERT INTO subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Toidupood', 5, 'e');
+INSERT INTO subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Transport', 6, 'e');
+INSERT INTO subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Lemmikloom', 7, 'e');
+INSERT INTO subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Telefon', 8, 'e');
+INSERT INTO subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Kodukulud', 9, 'e');
+INSERT INTO subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Ravikulud', 10, 'e');
+INSERT INTO subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Tasud ja viivised', 11, 'e');
+
+INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 1, 1, true);
+INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 1, 2, true);
+INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 2, 3, true);
+INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 2, 4, true);
+INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 3, 5, true);
+INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 3, 6, true);
+INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 3, 7, true);
+INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 3, 8, true);
+INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 3, 9, true);
+INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 3, 10, true);
+INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 3, 11, true);
 

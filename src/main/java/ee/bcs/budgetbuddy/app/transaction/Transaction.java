@@ -1,4 +1,4 @@
-package ee.bcs.budgetbuddy.domain;
+package ee.bcs.budgetbuddy.app.transaction;
 
 import ee.bcs.budgetbuddy.domain.account.Account;
 import ee.bcs.budgetbuddy.domain.subcategory.Subcategory;
