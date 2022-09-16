@@ -115,17 +115,17 @@ INSERT INTO subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Kodukulud',
 INSERT INTO subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Ravikulud', 10, 'e');
 INSERT INTO subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Tasud ja viivised', 11, 'e');
 
-INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 1, 1, true);
-INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 1, 2, true);
-INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 2, 3, true);
-INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 2, 4, true);
-INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 3, 5, true);
-INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 3, 6, true);
-INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 3, 7, true);
-INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 3, 8, true);
-INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 3, 9, true);
-INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 3, 10, true);
-INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 3, 11, true);
+INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 9, 12, true);
+INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 9, 13, true);
+INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 10, 14, true);
+INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 10, 15, true);
+INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 11, 16, true);
+INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 11, 17, true);
+INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 11, 18, true);
+INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 11, 19, true);
+INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 11, 20, true);
+INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 11, 21, true);
+INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 11, 22, true);
 
 INSERT INTO category (id, user_id, name, sequence, type) VALUES (DEFAULT, 3, 'Aktiivsed tulud', 1, 'i');
 INSERT INTO category (id, user_id, name, sequence, type) VALUES (DEFAULT, 3, 'Passiivsed tulud', 2, 'i');
@@ -148,17 +148,17 @@ INSERT INTO subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Kodukulud',
 INSERT INTO subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Ravikulud', 10, 'e');
 INSERT INTO subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Tasud ja viivised', 11, 'e');
 
-INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 1, 1, true);
-INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 1, 2, true);
-INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 2, 3, true);
-INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 2, 4, true);
-INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 3, 5, true);
-INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 3, 6, true);
-INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 3, 7, true);
-INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 3, 8, true);
-INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 3, 9, true);
-INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 3, 10, true);
-INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 3, 11, true);
+INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 17, 23, true);
+INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 17, 24, true);
+INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 18, 25, true);
+INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 18, 26, true);
+INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 19, 27, true);
+INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 19, 28, true);
+INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 19, 29, true);
+INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 19, 30, true);
+INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 19, 31, true);
+INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 19, 32, true);
+INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 19, 33, true);
 
 INSERT INTO transaction (id, user_id,sender_account_id,receiver_account_id,date,subcategory_id,description,amount,type,is_active) VALUES (DEFAULT,1,1,NULL,'2022-08-01',5,'Selver',10.4,'e',true);
 INSERT INTO transaction (id, user_id,sender_account_id,receiver_account_id,date,subcategory_id,description,amount,type,is_active) VALUES (DEFAULT,1,1,NULL,'2022-08-02',5,'Selver',100.22,'e',true);
