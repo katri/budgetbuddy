@@ -25,4 +25,9 @@ public class AccountService {
         accountRepository.save(account);
 
     }
+    public void updateAccountStatus(Integer accountId, Boolean isActive) {
+        Account account = accountRepository.getReferenceById(accountId);
+        account.setIsActive(isActive);
+        accountRepository.save(account);
+    }
 }

@@ -40,5 +40,9 @@ public class Account {
     @Column(name = "balance", nullable = false)
     private Integer balance;
 
+    @NotNull
+    @Column(name = "is_active", nullable = false)
+    private Boolean isActive = false;
+
 }
 

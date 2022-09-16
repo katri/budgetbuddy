@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 
 @RestController
-@RequestMapping("/transaction")
+@RequestMapping("/budget")
 public class BudgetController {
 
     @Resource
@@ -26,6 +26,13 @@ public class BudgetController {
             description = "")
     public void updateAccountName(Integer accountId, String accountName) {
         accountService.updateAccountName(accountId, accountName);
+    }
+
+    @PatchMapping("/account/status")
+    @Operation(summary = "Konto staatuse muutmine",
+            description = "Muudab andmebaasis konto isActive staatuse false-ks")
+    public void updateAccountStatus(Integer accountId, Boolean isActive) {
+        accountService.updateAccountStatus(accountId, isActive);
     }
 
 //    @PostMapping("/account/add")

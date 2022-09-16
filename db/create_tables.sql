@@ -21,6 +21,7 @@ CREATE TABLE account (
                          name varchar(255)  NOT NULL,
                          description varchar(255)  NULL,
                          balance int  NOT NULL,
+                         is_active boolean  NOT NULL DEFAULT true,
                          CONSTRAINT account_pk PRIMARY KEY (id)
 );
 
