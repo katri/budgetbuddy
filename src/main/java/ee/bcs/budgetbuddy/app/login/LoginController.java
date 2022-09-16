@@ -21,4 +21,10 @@ public class LoginController {
         return loginService.registerNewUser(request);
     }
 
+    @PostMapping("/log-in")
+    @Operation(summary = "Sisse logimine")
+    public UserInfo logIn(@RequestBody LoginRequest request) {
+        return loginService.logIn(request);
+    }
+
 }

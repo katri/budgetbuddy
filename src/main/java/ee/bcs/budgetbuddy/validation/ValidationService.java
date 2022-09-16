@@ -1,18 +1,34 @@
 package ee.bcs.budgetbuddy.validation;
 
 
+import ee.bcs.budgetbuddy.domain.user.User;
 import ee.bcs.budgetbuddy.infrastructure.exception.BusinessException;
 import ee.bcs.budgetbuddy.infrastructure.exception.DataNotFoundException;
+
+import java.util.List;
+import java.util.Optional;
 
 public class ValidationService {
 
     public static final String USER_IN_USE = "Selline kasutaja on juba kasutusel";
 
-    public static void validateUserExists(boolean userExists, String userName) {
+    public static final String INVALID_LOGIN_CREDENTIALS = "Vale kasutajanimi või parool";
+
+
+    public static void validateUserExists(boolean userExists, String username) {
         if (userExists) {
-            throw new BusinessException(USER_IN_USE, "Kasutajanimi " + userName + " on juba kasutusel.");
+            throw new BusinessException(USER_IN_USE, "Kasutajanimi " + username + " on juba kasutusel.");
         }
     }
+
+    public static void validatePasswordUserExists(User user) {
+        if (user == null)
+         {
+            throw new DataNotFoundException(INVALID_LOGIN_CREDENTIALS, "Vale kasutajanimi või parool. Proovi uuesti :)");
+        }
+    }
+
+
 
 //    public static final String ACCOUNT_NOT_EXISTS = "Sellist kontot ei eksisteeri";
 //    public static final String USER_NOT_EXISTS = "Sellist kasutajat ei eksisteeri";
