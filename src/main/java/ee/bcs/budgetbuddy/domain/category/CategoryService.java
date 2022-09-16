@@ -118,6 +118,14 @@ public class CategoryService {
         return lastCategory.getSequence() + 1;
     }
 
+    public void updateCategoryIsActiveStatus(Integer categoryId, Boolean isActive) {
+        List<CategoryRelation> categoryRelations = categoryRelationService.findAllRelationsForCategory(categoryId);
+        for (CategoryRelation categoryRelation : categoryRelations) {
+            categoryRelation.setIsActive(isActive);
+        }
+        categoryRelationService.saveAll(categoryRelations);
+
+    }
 
 
 //    public void deleteCategory(CategoryChangeRequest request) {

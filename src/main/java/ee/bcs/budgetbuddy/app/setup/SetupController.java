@@ -71,13 +71,19 @@ public class SetupController {
         subcategoryService.updateSubcategoryName(subcategoryId, subcategoryName);
     }
 
-//    @PostMapping("category/inactive")
-//    @Operation(summary = "Kategooria kustutamine",
-//            description = "")
-//    public void deleteCategory(@RequestBody CategoryChangeRequest request) {
-//        categoryService.deleteCategory(request);
-//    }
+    @PatchMapping("category/status")
+    @Operation(summary = "Kategooria kustutamine kasutaja jaoks",
+            description = "Muudab andmebaasis kategooria isActive staatuse false-ks")
+    public void updateCategoryIsActiveStatus(Integer categoryId, Boolean isActive) {
+        setupService.updateCategoryIsActiveStatus(categoryId, isActive);
+    }
 
+    @PatchMapping("subcategory/status")
+    @Operation(summary = "Subkategooria kustutamine kasutaja jaoks",
+            description = "Muudab andmebaasis kategooria isActive staatuse false-ks")
+    public void updateSubcategoryIsActiveStatus(Integer subcategoryId, Boolean isActive) {
+        setupService.updateSubcategoryIsActiveStatus(subcategoryId, isActive);
+    }
 }
 
 

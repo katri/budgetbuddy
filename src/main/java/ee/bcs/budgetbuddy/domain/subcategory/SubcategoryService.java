@@ -1,6 +1,7 @@
 package ee.bcs.budgetbuddy.domain.subcategory;
 
 import ee.bcs.budgetbuddy.domain.category.Category;
+import ee.bcs.budgetbuddy.domain.category.CategoryRelation;
 import ee.bcs.budgetbuddy.domain.category.CategoryRelationService;
 import ee.bcs.budgetbuddy.domain.category.CategoryService;
 import ee.bcs.budgetbuddy.domain.standardSubcategory.StandardSubcategory;
@@ -37,6 +38,7 @@ public class SubcategoryService {
         subcategoryRepository.saveAll(subcategories);
         return subcategories;
     }
+
     @Transactional
     public void addSubcategory(Integer categoryId, String subcategoryName) {
         Category category = categoryService.findById(categoryId);
@@ -62,4 +64,5 @@ public class SubcategoryService {
         subcategory.setName(subcategoryName);
         subcategoryRepository.save(subcategory);
     }
+
 }
