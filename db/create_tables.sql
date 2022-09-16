@@ -123,7 +123,7 @@ CREATE TABLE transaction (
                              date date  NOT NULL,
                              subcategory_id int  NOT NULL,
                              description varchar(255)  NULL,
-                             amount int  NOT NULL,
+                             amount float  NOT NULL,
                              type char(1)  NOT NULL,
                              is_active boolean  NOT NULL DEFAULT true,
                              CONSTRAINT transaction_log_pk PRIMARY KEY (id)

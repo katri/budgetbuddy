@@ -48,7 +48,7 @@ public class Transaction {
 
     @NotNull
     @Column(name = "amount", nullable = false)
-    private Integer amount;
+    private Float amount;
 
     @Size(max = 1)
     @NotNull

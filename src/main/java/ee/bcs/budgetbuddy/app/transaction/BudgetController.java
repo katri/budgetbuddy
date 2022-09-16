@@ -46,7 +46,7 @@ public class BudgetController {
 //    }
 
     @GetMapping("transaction/all")
-    @Operation(summary = "Kõikide kannete lisiti kuvamine")
+    @Operation(summary = "Kõikide kannete listi kuvamine")
     public List<TransactionInfo> findTransactions(Integer accountId) {
         return budgetService.findTransactions(accountId);
     }
