@@ -2,6 +2,7 @@ package ee.bcs.budgetbuddy.app.login;
 
 import com.sun.xml.bind.v2.TODO;
 import ee.bcs.budgetbuddy.domain.account.Account;
+import ee.bcs.budgetbuddy.domain.account.AccountInfo;
 import ee.bcs.budgetbuddy.domain.account.AccountService;
 import ee.bcs.budgetbuddy.domain.category.Category;
 import ee.bcs.budgetbuddy.domain.category.CategoryRelationService;
@@ -56,12 +57,13 @@ public class LoginService {
     public UserInfo logIn(LoginRequest request) {
         User user = userRepository.findUserBy(request.getUsername(), request.getPassword());
         ValidationService.validatePasswordUserExists(user);
+        return createUserInfo(user);
+    }
+
+    private UserInfo createUserInfo(User user) {
         UserInfo userInfo = userMapper.userToUserInfo(user);
-      //  List<Account> accounts = accountService.findAllAccountsBy(user.getId());
-      //  userInfo.setAccounts(accounts);
-
-       // TODO    : mappida kaasa uus DTO, kus on sees AccountInfo
-
+        List<AccountInfo> accounts = accountService.findAllAccountsBy(user.getId());
+        userInfo.setAccounts(accounts);
         return userInfo;
     }
 }

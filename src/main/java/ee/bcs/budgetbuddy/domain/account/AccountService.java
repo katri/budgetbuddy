@@ -24,16 +24,18 @@ public class AccountService {
         Account account = accountRepository.getReferenceById(accountId);
         account.setName(accountName);
         accountRepository.save(account);
-
     }
+
     public void updateAccountStatus(Integer accountId, Boolean isActive) {
         Account account = accountRepository.getReferenceById(accountId);
         account.setIsActive(isActive);
         accountRepository.save(account);
     }
 
-    public List<Account> findAllAccountsBy(Integer userId) {
-        return accountRepository.findAllAccountsBy(userId);
+    public List<AccountInfo> findAllAccountsBy(Integer userId) {
+        List<Account> accounts = accountRepository.findAllAccountsBy(userId);
+        return accountMapper.accountsToAccountInfos(accounts);
     }
+
 }
 

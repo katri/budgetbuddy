@@ -13,7 +13,7 @@ public class TransactionInfo implements Serializable {
     private LocalDate date;
     private Integer subcategoryId;
     private String description;
-    private Integer amount;
+    private Float amount;
     private String type;
     private Boolean isActive;
 }

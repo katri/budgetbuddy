@@ -14,6 +14,6 @@ public class AccountRequest implements Serializable {
     @NotNull
     private String name;
     private String description;
-    private Integer balance;
+    private Float balance;
 
 }

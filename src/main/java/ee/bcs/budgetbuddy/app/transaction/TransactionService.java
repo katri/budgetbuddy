@@ -17,7 +17,6 @@ public class TransactionService {
     public List<TransactionInfo> findTransactions(Integer accountId) {
         List<Transaction> transactions = transactionRepository.findTransactionsBy(accountId);
         return transactionMapper.transactionsToTransactionInfos(transactions);
-
     }
 
     public List<Transaction> findTransactionsBy(Integer month, Integer subcategoryId) {

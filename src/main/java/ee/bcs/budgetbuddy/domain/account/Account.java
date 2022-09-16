@@ -38,7 +38,7 @@ public class Account {
 
     @NotNull
     @Column(name = "balance", nullable = false)
-    private Integer balance;
+    private Float balance;
 
     @NotNull
     @Column(name = "is_active", nullable = false)
