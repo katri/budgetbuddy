@@ -1,5 +1,7 @@
 package ee.bcs.budgetbuddy.domain.user;
 
+import ee.bcs.budgetbuddy.app.login.LoginRequest;
+import ee.bcs.budgetbuddy.app.login.UserInfo;
 import ee.bcs.budgetbuddy.app.login.UserRequest;
 import ee.bcs.budgetbuddy.app.login.UserResponse;
 import org.mapstruct.Mapper;
@@ -14,4 +16,9 @@ public interface UserMapper {
 
     @Mapping(source = "id", target = "userId")
     UserResponse userToUserResponse(User user);
+
+    User loginRequestToUser(LoginRequest request);
+
+    @Mapping(source = "id", target = "userId")
+    UserInfo userToUserInfo(User user);
 }

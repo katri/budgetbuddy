@@ -91,5 +91,18 @@ public class CategoryRelationService {
     public void saveAll(List<CategoryRelation> categoryRelations) {
         categoryRelationRepository.saveAll(categoryRelations);
     }
+
+    public List<CategoryRelation> findAllRelationsForCategory(Integer categoryId) {
+        return categoryRelationRepository.findByCategory(categoryId);
+    }
+
+    public void updateSubcategoryIsActiveStatus(Integer subcategoryId, Boolean isActive) {
+        CategoryRelation categoryRelation = categoryRelationRepository.findBySubcategory(subcategoryId);
+        categoryRelation.setIsActive(isActive);
+        categoryRelationRepository.save(categoryRelation);
+
+
+
+    }
 }
 

@@ -32,7 +32,7 @@ public class Budgeted {
 
     @NotNull
     @Column(name = "amount", nullable = false)
-    private Integer amount;
+    private Float amount;
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)

@@ -11,5 +11,10 @@ FROM category_relation
          JOIN category c ON c.id = category_relation.category_id
          JOIN subcategory s ON s.id = category_relation.subcategory_id;
 
+SELECT *
+FROM transaction t
+WHERE  EXTRACT(MONTH from date) = 8
+  AND t.subcategory_id = 5
+
 
 

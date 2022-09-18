@@ -19,7 +19,7 @@ public class User {
     @Size(max = 255)
     @NotNull
     @Column(name = "user_name", nullable = false)
-    private String userName;
+    private String username;
 
     @Size(max = 255)
     @NotNull

@@ -20,7 +20,8 @@ CREATE TABLE account (
                          account_type_id int  NOT NULL,
                          name varchar(255)  NOT NULL,
                          description varchar(255)  NULL,
-                         balance int  NOT NULL,
+                         balance float  NOT NULL,
+                         is_active boolean  NOT NULL DEFAULT true,
                          CONSTRAINT account_pk PRIMARY KEY (id)
 );
 
@@ -38,7 +39,7 @@ CREATE TABLE budgeted (
                           user_id int  NOT NULL,
                           year int  NOT NULL,
                           month_id int  NOT NULL,
-                          amount int  NOT NULL,
+                          amount float  NOT NULL,
                           subcategory_id int  NOT NULL,
                           is_active boolean  NOT NULL DEFAULT true,
                           CONSTRAINT budgeted_pk PRIMARY KEY (id)
@@ -122,7 +123,7 @@ CREATE TABLE transaction (
                              date date  NOT NULL,
                              subcategory_id int  NOT NULL,
                              description varchar(255)  NULL,
-                             amount int  NOT NULL,
+                             amount float  NOT NULL,
                              type char(1)  NOT NULL,
                              is_active boolean  NOT NULL DEFAULT true,
                              CONSTRAINT transaction_log_pk PRIMARY KEY (id)

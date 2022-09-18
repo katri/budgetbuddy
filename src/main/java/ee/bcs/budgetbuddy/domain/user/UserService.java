@@ -1,5 +1,6 @@
 package ee.bcs.budgetbuddy.domain.user;
 
+import ee.bcs.budgetbuddy.app.login.LoginRequest;
 import ee.bcs.budgetbuddy.app.login.UserRequest;
 import ee.bcs.budgetbuddy.validation.ValidationService;
 import org.springframework.stereotype.Service;
@@ -16,8 +17,8 @@ public class UserService {
 
 
     public User addUser(UserRequest request) {
-        boolean userExists = userRepository.existsByUserName(request.getUserName());
-        ValidationService.validateUserExists(userExists, request.getUserName());
+        boolean userExists = userRepository.existsByUsername(request.getUsername());
+        ValidationService.validateUserExists(userExists, request.getUsername());
         User user = userMapper.userRequestToUser(request);
         userRepository.save(user);
         return user;
@@ -25,5 +26,9 @@ public class UserService {
 
     public User findById(Integer userId) {
         return userRepository.findById(userId).get();
+    }
+
+    public User userRequestToUser(LoginRequest request) {
+        return userMapper.loginRequestToUser(request);
     }
 }

@@ -4,6 +4,7 @@ import ee.bcs.budgetbuddy.domain.category.Category;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class AccountService {
@@ -23,6 +24,18 @@ public class AccountService {
         Account account = accountRepository.getReferenceById(accountId);
         account.setName(accountName);
         accountRepository.save(account);
-
     }
+
+    public void updateAccountStatus(Integer accountId, Boolean isActive) {
+        Account account = accountRepository.getReferenceById(accountId);
+        account.setIsActive(isActive);
+        accountRepository.save(account);
+    }
+
+    public List<AccountInfo> findAllAccountsBy(Integer userId) {
+        List<Account> accounts = accountRepository.findAllAccountsBy(userId);
+        return accountMapper.accountsToAccountInfos(accounts);
+    }
+
 }
+

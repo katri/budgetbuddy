@@ -1,6 +1,7 @@
 package ee.bcs.budgetbuddy.domain.subcategory;
 
 import ee.bcs.budgetbuddy.domain.category.Category;
+import ee.bcs.budgetbuddy.domain.category.CategoryRelation;
 import ee.bcs.budgetbuddy.domain.category.CategoryRelationService;
 import ee.bcs.budgetbuddy.domain.category.CategoryService;
 import ee.bcs.budgetbuddy.domain.standardSubcategory.StandardSubcategory;
@@ -19,16 +20,17 @@ public class SubcategoryService {
     private StandardSubcategoryService standardSubcategoryService;
 
     @Resource
+    private CategoryService categoryService;
+
+    @Resource
+    private CategoryRelationService categoryRelationService;
+
+    @Resource
     private SubcategoryMapper subcategoryMapper;
 
     @Resource
     private SubcategoryRepository subcategoryRepository;
 
-    @Resource
-    private CategoryService categoryService;
-
-    @Resource
-    private CategoryRelationService categoryRelationService;
 
     public List<Subcategory> createAndSaveSubcategories() {
         List<StandardSubcategory> standardSubcategories = standardSubcategoryService.findAllSubcategories();
@@ -36,6 +38,7 @@ public class SubcategoryService {
         subcategoryRepository.saveAll(subcategories);
         return subcategories;
     }
+
     @Transactional
     public void addSubcategory(Integer categoryId, String subcategoryName) {
         Category category = categoryService.findById(categoryId);
@@ -46,9 +49,6 @@ public class SubcategoryService {
     private Subcategory createNewSubcategory(String subcategoryName, Category category) {
         Subcategory subcategory = new Subcategory();
         subcategory.setName(subcategoryName);
-
-        // TODO: https://stackoverflow.com/questions/50871759/spring-data-get-last-record-from-the-table
-        // TODO: leidsin lahenduse googledades "java jpa repository last id"
         subcategory.setSequence(getNextSequenceNumber());
         subcategory.setType(category.getType());
         subcategoryRepository.save(subcategory);
@@ -56,8 +56,7 @@ public class SubcategoryService {
     }
 
     private Integer getNextSequenceNumber() {
-        Subcategory lastSubCategory = subcategoryRepository.findFirstByOrderBySequenceDesc();
-        return lastSubCategory.getSequence() + 1;
+        return subcategoryRepository.findFirstByOrderBySequenceDesc().getSequence() + 1;
     }
 
     public void updateSubcategoryName(Integer subcategoryId, String subcategoryName) {
@@ -65,4 +64,5 @@ public class SubcategoryService {
         subcategory.setName(subcategoryName);
         subcategoryRepository.save(subcategory);
     }
+
 }

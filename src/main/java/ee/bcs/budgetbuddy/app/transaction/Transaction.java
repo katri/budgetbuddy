@@ -1,4 +1,4 @@
-package ee.bcs.budgetbuddy.domain;
+package ee.bcs.budgetbuddy.app.transaction;
 
 import ee.bcs.budgetbuddy.domain.account.Account;
 import ee.bcs.budgetbuddy.domain.subcategory.Subcategory;
@@ -48,7 +48,7 @@ public class Transaction {
 
     @NotNull
     @Column(name = "amount", nullable = false)
-    private Integer amount;
+    private Float amount;
 
     @Size(max = 1)
     @NotNull
