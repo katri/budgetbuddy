@@ -9,18 +9,19 @@ GRANT ALL ON SCHEMA public TO PUBLIC;
 
 -- SIIA ALLA TULEB VERTABELO TABELITE LOOMISE OSA
 
-    -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2022-09-08 07:41:41.01
+-- Created by Vertabelo (http://vertabelo.com)
+-- Last modification date: 2022-09-08 20:40:06.79
 
 -- tables
 -- Table: account
 CREATE TABLE account (
                          id serial  NOT NULL,
                          user_id int  NOT NULL,
-                         type_id int  NOT NULL,
+                         account_type_id int  NOT NULL,
                          name varchar(255)  NOT NULL,
-                         desrciption varchar(255)  NULL,
-                         balance int  NOT NULL,
+                         description varchar(255)  NULL,
+                         balance float  NOT NULL,
+                         is_active boolean  NOT NULL DEFAULT true,
                          CONSTRAINT account_pk PRIMARY KEY (id)
 );
 
@@ -38,8 +39,9 @@ CREATE TABLE budgeted (
                           user_id int  NOT NULL,
                           year int  NOT NULL,
                           month_id int  NOT NULL,
-                          amount int  NOT NULL,
+                          amount float  NOT NULL,
                           subcategory_id int  NOT NULL,
+                          is_active boolean  NOT NULL DEFAULT true,
                           CONSTRAINT budgeted_pk PRIMARY KEY (id)
 );
 
@@ -48,6 +50,7 @@ CREATE TABLE category (
                           id serial  NOT NULL,
                           user_id int  NOT NULL,
                           name varchar(255)  NOT NULL,
+                          sequence int  NOT NULL,
                           type char(1)  NOT NULL,
                           CONSTRAINT category_pk PRIMARY KEY (id)
 );
@@ -106,6 +109,7 @@ CREATE TABLE standard_subcategory (
 CREATE TABLE subcategory (
                              id serial  NOT NULL,
                              name varchar(255)  NOT NULL,
+                             sequence int  NOT NULL,
                              type char(1)  NULL,
                              CONSTRAINT subcategory_pk PRIMARY KEY (id)
 );
@@ -119,7 +123,7 @@ CREATE TABLE transaction (
                              date date  NOT NULL,
                              subcategory_id int  NOT NULL,
                              description varchar(255)  NULL,
-                             amount int  NOT NULL,
+                             amount float  NOT NULL,
                              type char(1)  NOT NULL,
                              is_active boolean  NOT NULL DEFAULT true,
                              CONSTRAINT transaction_log_pk PRIMARY KEY (id)
@@ -128,6 +132,7 @@ CREATE TABLE transaction (
 -- Table: user
 CREATE TABLE "user" (
                         id serial  NOT NULL,
+                        role_id int  NOT NULL,
                         user_name varchar(255)  NOT NULL,
                         password varchar(255)  NOT NULL,
                         email varchar(255)  NOT NULL,
@@ -135,18 +140,10 @@ CREATE TABLE "user" (
                         CONSTRAINT user_pk PRIMARY KEY (id)
 );
 
--- Table: user_role
-CREATE TABLE user_role (
-                           id serial  NOT NULL,
-                           user_id int  NOT NULL,
-                           role_id int  NOT NULL,
-                           CONSTRAINT user_role_pk PRIMARY KEY (id)
-);
-
 -- foreign keys
 -- Reference: account_type (table: account)
 ALTER TABLE account ADD CONSTRAINT account_type
-    FOREIGN KEY (type_id)
+    FOREIGN KEY (account_type_id)
         REFERENCES account_type (id)
         NOT DEFERRABLE
             INITIALLY IMMEDIATE
@@ -256,20 +253,13 @@ ALTER TABLE transaction ADD CONSTRAINT transaction_user
             INITIALLY IMMEDIATE
 ;
 
--- Reference: user_role_role (table: user_role)
-ALTER TABLE user_role ADD CONSTRAINT user_role_role
+-- Reference: user_role (table: user)
+ALTER TABLE "user" ADD CONSTRAINT user_role
     FOREIGN KEY (role_id)
         REFERENCES role (id)
         NOT DEFERRABLE
             INITIALLY IMMEDIATE
 ;
 
--- Reference: user_role_user (table: user_role)
-ALTER TABLE user_role ADD CONSTRAINT user_role_user
-    FOREIGN KEY (user_id)
-        REFERENCES "user" (id)
-        NOT DEFERRABLE
-            INITIALLY IMMEDIATE
-;
-
 -- End of file.
+
