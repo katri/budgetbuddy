@@ -1,11 +1,10 @@
 package ee.bcs.budgetbuddy.domain.category;
 
 import ee.bcs.budgetbuddy.app.setup.CategoryInfo;
-import ee.bcs.budgetbuddy.app.setup.SetupResponse;
+import ee.bcs.budgetbuddy.app.setup.BudgetInfo;
 import ee.bcs.budgetbuddy.app.setup.SubcategoryInfo;
 import ee.bcs.budgetbuddy.domain.standardCategory.StandardCategory;
 import ee.bcs.budgetbuddy.domain.standardCategory.StandardCategoryService;
-import ee.bcs.budgetbuddy.domain.subcategory.SubcategoryService;
 import ee.bcs.budgetbuddy.domain.user.User;
 import ee.bcs.budgetbuddy.domain.user.UserService;
 import org.springframework.stereotype.Service;
@@ -53,20 +52,20 @@ public class CategoryService {
         }
     }
 
-    public SetupResponse getIncomeCategoriesSetup(Integer userId) {
+    public BudgetInfo getIncomeCategoriesSetup(Integer userId) {
         List<CategoryInfo> categoryInfos = createCategoryInfos(userId, INCOME);
         addSubcategorytoCategoryInfos(categoryInfos);
-        SetupResponse setupResponse = new SetupResponse();
-        setupResponse.setCategories(categoryInfos);
-        return setupResponse;
+        BudgetInfo budgetInfo = new BudgetInfo();
+        budgetInfo.setCategories(categoryInfos);
+        return budgetInfo;
     }
 
-    public SetupResponse getExpenseCategoriesSetup(Integer userId) {
+    public BudgetInfo getExpenseCategoriesSetup(Integer userId) {
         List<CategoryInfo> categoryInfos = createCategoryInfos(userId, EXPENSE);
         addSubcategorytoCategoryInfos(categoryInfos);
-        SetupResponse setupResponse = new SetupResponse();
-        setupResponse.setCategories(categoryInfos);
-        return setupResponse;
+        BudgetInfo budgetInfo = new BudgetInfo();
+        budgetInfo.setCategories(categoryInfos);
+        return budgetInfo;
     }
 
     public void addIncomeCategory(Integer userId, String categoryName) {

@@ -35,11 +35,11 @@ public class SetupService {
         subcategoryService.updateSubcategoryName(subcategoryId, subcategoryName);
     }
 
-    public SetupResponse getIncomeCategoriesSetup(Integer userId) {
+    public BudgetInfo getIncomeCategoriesSetup(Integer userId) {
         return categoryService.getIncomeCategoriesSetup(userId);
     }
 
-    public SetupResponse getExpenseCategoriesSetup(Integer userId) {
+    public BudgetInfo getExpenseCategoriesSetup(Integer userId) {
         return categoryService.getExpenseCategoriesSetup(userId);
     }
 
