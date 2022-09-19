@@ -37,5 +37,14 @@ public class AccountService {
         return accountMapper.accountsToAccountInfos(accounts);
     }
 
+    public void updateAccountBalance(Integer accountId, Float amount) {
+        Account account = accountRepository.getReferenceById(accountId);
+        account.setBalance(account.getBalance() - amount);
+        accountRepository.save(account);
+    }
+
+    public Account findById(Integer accountId) {
+        return accountRepository.getReferenceById(accountId);
+    }
 }
 

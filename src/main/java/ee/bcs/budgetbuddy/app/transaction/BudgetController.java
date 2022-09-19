@@ -17,7 +17,7 @@ public class BudgetController {
 
     @PostMapping("/account/add")
     @Operation(summary = "Uue konto lisamine kasutajale",
-            description = "Lisab kasutajale uue konto vastavalit sisestatud andmetele")
+            description = "Lisab kasutajale uue konto vastavalt sisestatud andmetele")
     public void addNewAccount(@RequestBody AccountRequest accountRequest) {
         budgetService.addNewAccount(accountRequest);
     }
@@ -35,16 +35,18 @@ public class BudgetController {
         budgetService.updateAccountStatus(accountId, isActive);
     }
 
-//    @PostMapping("/transaction/add")
-//    @Operation(summary = "Uue kande lisamine kasutajale",
-//            description = "Lisab kasutajale uue kande vastavalit sisestatud andmetele")
-//    public List<TransactionInfo> addNewTransaction(@RequestBody TransactionInfo transactionRequest) {
-//    }
-
     @GetMapping("/transaction/account/all")
     @Operation(summary = "Kõikide kannete listi kuvamine")
     public List<TransactionInfo> findTransactions(Integer accountId) {
         return budgetService.findTransactions(accountId);
+    }
+
+    @PostMapping("/transaction/add")
+    @Operation(summary = "Uue kande lisamine kasutajale",
+            description = "Lisab kasutajale uue kande vastavalt sisestatud andmetele. Tagastab samasuguse listi, " +
+                    "nagu findTransactions teenus, lisandunud on ka uus transaction")
+    public List<TransactionInfo> addNewTransaction(@RequestBody TransactionInfo request) {
+        return budgetService.addNewTransaction(request);
     }
 
 }

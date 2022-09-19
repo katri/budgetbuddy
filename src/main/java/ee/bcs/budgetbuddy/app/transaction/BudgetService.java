@@ -10,8 +10,8 @@ import java.util.List;
 @Service
 public class BudgetService {
 
-   @Resource
-   private TransactionService transactionService;
+    @Resource
+    private TransactionService transactionService;
 
     @Resource
     private AccountService accountService;
@@ -23,6 +23,7 @@ public class BudgetService {
     public void addNewAccount(AccountRequest accountRequest) {
         accountService.addNewAccount(accountRequest);
     }
+
     public void updateAccountName(Integer accountId, String accountName) {
         accountService.updateAccountName(accountId, accountName);
     }
@@ -31,5 +32,7 @@ public class BudgetService {
         accountService.updateAccountStatus(accountId, isActive);
     }
 
-
+    public List<TransactionInfo> addNewTransaction(TransactionInfo request) {
+        return transactionService.addNewTransaction(request);
+    }
 }
