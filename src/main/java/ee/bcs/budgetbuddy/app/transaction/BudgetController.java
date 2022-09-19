@@ -41,12 +41,10 @@ public class BudgetController {
 //    public List<TransactionInfo> addNewTransaction(@RequestBody TransactionInfo transactionRequest) {
 //    }
 
-    @GetMapping("transaction/all")
+    @GetMapping("/transaction/account/all")
     @Operation(summary = "Kõikide kannete listi kuvamine")
     public List<TransactionInfo> findTransactions(Integer accountId) {
         return budgetService.findTransactions(accountId);
     }
-
-
 
 }

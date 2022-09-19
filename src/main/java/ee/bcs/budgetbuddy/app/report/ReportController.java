@@ -16,7 +16,7 @@ public class ReportController {
     @Resource
     private ReportService reportService;
 
-    @GetMapping("")
+    @GetMapping("/subcategory/sum")
     @Operation(summary = "Ühe kuu lõikes valitud subkategooria tulude või kulude summa leidmine")
     public Float calculateSubcategorySumInMonth(Integer month, Integer subcategoryId) {
             return reportService.calculateSubcategorySumInMonth(month, subcategoryId);

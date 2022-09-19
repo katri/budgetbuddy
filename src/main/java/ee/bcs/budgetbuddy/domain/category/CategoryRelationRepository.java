@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface CategoryRelationRepository extends JpaRepository<CategoryRelation, Integer> {
 
-    @Query("select c from CategoryRelation c where c.category.id = ?1 order by c.category.sequence")
+    @Query("select c from CategoryRelation c where c.category.id = ?1 and c.isActive = true order by c.category.sequence")
     List<CategoryRelation> findSubCategoriesBy(Integer categoryId);
 
 
@@ -16,8 +16,6 @@ public interface CategoryRelationRepository extends JpaRepository<CategoryRelati
 
     @Query("select c from CategoryRelation c where c.subcategory.id = ?1")
     CategoryRelation findBySubcategory(Integer id);
-
-
 
 
 }
