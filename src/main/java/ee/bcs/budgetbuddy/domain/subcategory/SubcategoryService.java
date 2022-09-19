@@ -65,4 +65,7 @@ public class SubcategoryService {
         subcategoryRepository.save(subcategory);
     }
 
+    public Subcategory findById(Integer subcategoryId) {
+        return subcategoryRepository.getReferenceById(subcategoryId);
+    }
 }
