@@ -261,15 +261,15 @@ INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUE
 INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 16, 65, TRUE);
 INSERT INTO category_relation (id, category_id, subcategory_id, is_active) VALUES (DEFAULT, 16, 66, TRUE);
 
-INSERT INTO transaction (id, user_id,sender_account_id,receiver_account_id,date,subcategory_id,description,amount,type,is_active) VALUES (DEFAULT,1,1,NULL,'2022-08-01',5,'Selver',10.4,'e',true);
-INSERT INTO transaction (id, user_id,sender_account_id,receiver_account_id,date,subcategory_id,description,amount,type,is_active) VALUES (DEFAULT,1,1,NULL,'2022-08-02',5,'Selver',100.22,'e',true);
-INSERT INTO transaction (id, user_id,sender_account_id,receiver_account_id,date,subcategory_id,description,amount,type,is_active) VALUES (DEFAULT,1,1,NULL,'2022-08-05',5,'Selver',25.78,'e',true);
-INSERT INTO transaction (id, user_id,sender_account_id,receiver_account_id,date,subcategory_id,description,amount,type,is_active) VALUES (DEFAULT,1,1,NULL,'2022-08-05',6,'Kulu',25.41,'e',true);
-INSERT INTO transaction (id, user_id,sender_account_id,receiver_account_id,date,subcategory_id,description,amount,type,is_active) VALUES (DEFAULT,1,1,NULL,'2022-09-01',5,'Selver',10.03,'e',true);
-INSERT INTO transaction (id, user_id,sender_account_id,receiver_account_id,date,subcategory_id,description,amount,type,is_active) VALUES (DEFAULT,1,1,NULL,'2022-09-02',5,'Rimi',7.55,'e',true);
-INSERT INTO transaction (id, user_id,sender_account_id,receiver_account_id,date,subcategory_id,description,amount,type,is_active) VALUES (DEFAULT,1,1,NULL,'2022-09-05',5,'Selver toit',45.70,'e',true);
+INSERT INTO transaction (id, user_id,sender_account_id,receiver_account_id,date,subcategory_id,description,amount,type,is_active) VALUES (DEFAULT,1,1,NULL,'2022-08-01',8,'Selver',10.4,'e',true);
+INSERT INTO transaction (id, user_id,sender_account_id,receiver_account_id,date,subcategory_id,description,amount,type,is_active) VALUES (DEFAULT,1,1,NULL,'2022-08-02',8,'Selver',100.22,'e',true);
+INSERT INTO transaction (id, user_id,sender_account_id,receiver_account_id,date,subcategory_id,description,amount,type,is_active) VALUES (DEFAULT,1,1,NULL,'2022-08-05',8,'Selver',25.78,'e',true);
+INSERT INTO transaction (id, user_id,sender_account_id,receiver_account_id,date,subcategory_id,description,amount,type,is_active) VALUES (DEFAULT,1,1,NULL,'2022-08-05',9,'Kulu',25.41,'e',true);
+INSERT INTO transaction (id, user_id,sender_account_id,receiver_account_id,date,subcategory_id,description,amount,type,is_active) VALUES (DEFAULT,1,1,NULL,'2022-09-01',8,'Selver',10.03,'e',true);
+INSERT INTO transaction (id, user_id,sender_account_id,receiver_account_id,date,subcategory_id,description,amount,type,is_active) VALUES (DEFAULT,1,1,NULL,'2022-09-02',8,'Rimi',7.55,'e',true);
+INSERT INTO transaction (id, user_id,sender_account_id,receiver_account_id,date,subcategory_id,description,amount,type,is_active) VALUES (DEFAULT,1,1,NULL,'2022-09-05',8,'Selver toit',45.70,'e',true);
 
-INSERT INTO budgeted (id, user_id, year, month_id, amount, subcategory_id, is_active) VALUES (DEFAULT, 1, 2022, 8, 200, 1, true);
+INSERT INTO budgeted (id, user_id, year, month_id, amount, subcategory_id, is_active) VALUES (DEFAULT, 1, 2022, 8, 2000, 1, true);
 INSERT INTO budgeted (id, user_id, year, month_id, amount, subcategory_id, is_active) VALUES (DEFAULT, 1, 2022, 8, 60, 2, true);
 INSERT INTO budgeted (id, user_id, year, month_id, amount, subcategory_id, is_active) VALUES (DEFAULT, 1, 2022, 8, 40, 3, true);
 INSERT INTO budgeted (id, user_id, year, month_id, amount, subcategory_id, is_active) VALUES (DEFAULT, 1, 2022, 8, 45, 4, true);

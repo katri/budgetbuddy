@@ -1,5 +1,6 @@
 package ee.bcs.budgetbuddy.app.transaction;
 
+import ee.bcs.budgetbuddy.domain.account.AccountInfo;
 import ee.bcs.budgetbuddy.domain.account.AccountRequest;
 import ee.bcs.budgetbuddy.domain.account.AccountService;
 import org.springframework.stereotype.Service;
@@ -34,5 +35,9 @@ public class BudgetService {
 
     public List<TransactionInfo> addNewTransaction(TransactionInfo request) {
         return transactionService.addNewTransaction(request);
+    }
+
+    public List<AccountInfo> findAccounts(Integer userId) {
+        return accountService.findAllAccountsBy(userId);
     }
 }

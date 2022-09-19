@@ -51,10 +51,10 @@ public class BudgetController {
     }
 
 
-//    @GetMapping("/account/all")
-//    @Operation(summary = "Kõikide kontode listi kuvamine")
-//    public List<AccountInfo> findAccounts(Integer userId) {
-//        return budgetService.findAccount(userId);
-//    }
+    @GetMapping("/account/all")
+    @Operation(summary = "Kõikide kontode listi kuvamine")
+    public List<AccountInfo> findAccounts(Integer userId) {
+        return budgetService.findAccounts(userId);
+    }
 
 }

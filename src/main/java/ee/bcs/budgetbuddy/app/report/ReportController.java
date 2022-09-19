@@ -21,12 +21,17 @@ public class ReportController {
             return reportService.calculateSubcategorySumInMonth(year, month, subcategoryId);
     }
 
-
-    @GetMapping("/budget")
-    @Operation(summary = "Raport")
+    @GetMapping("/budget/income")
+    @Operation(summary = "Sissetulekud. Raport töötab: year 2022, month 8 ja user 1")
+    public BudgetInfo getBudgetInfoIncome(Integer year, Integer month, Integer userId) {
+        return reportService.getBudgetInfoIncome(year, month, userId);
+    }
+    @GetMapping("/budget/expense")
+    @Operation(summary = "Kulud.Raport töötab: year 2022, month 8 ja user 1 ")
     public BudgetInfo getBudgetInfoExpense(Integer year, Integer month, Integer userId) {
             return reportService.getBudgetInfoExpense(year, month, userId);
     }
+
 
 
 
