@@ -50,11 +50,13 @@ public class BudgetController {
         return budgetService.addNewTransaction(request);
     }
 
-
     @GetMapping("/account/all")
     @Operation(summary = "Kõikide kontode listi kuvamine")
     public List<AccountInfo> findAccounts(Integer userId) {
         return budgetService.findAccounts(userId);
     }
 
+    @PatchMapping("/transaction/status")
+    @Operation(summary = "Ühe kande kuvamine")
+    public void updateTransactionStatus(Integer accountId, Boolean isActive) {
 }
