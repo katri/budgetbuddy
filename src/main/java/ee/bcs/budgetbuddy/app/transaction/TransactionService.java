@@ -68,10 +68,16 @@ public class TransactionService {
         }
     }
 
+    @Transactional
     public void updateTransactionStatus(Integer transactionId, Boolean isActive) {
         Transaction transaction = transactionRepository.getReferenceById(transactionId);
+
+        accountService.updateAccountBalancesForDelete(transaction);
+
         transaction.setIsActive(isActive);
         transactionRepository.save(transaction);
+
+
 
     }
 }
