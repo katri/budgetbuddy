@@ -6,6 +6,8 @@ import java.io.Serializable;
 import java.util.List;
 
 @Data
-public class SetupResponse implements Serializable {
+public class BudgetInfo implements Serializable {
     private List<CategoryInfo> categories;
+    private Float totalBudgetedSum;
+    private Float totalSum;
 }

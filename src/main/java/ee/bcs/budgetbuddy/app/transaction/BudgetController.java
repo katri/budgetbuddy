@@ -1,5 +1,6 @@
 package ee.bcs.budgetbuddy.app.transaction;
 
+import ee.bcs.budgetbuddy.domain.account.AccountInfo;
 import ee.bcs.budgetbuddy.domain.account.AccountRequest;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
@@ -47,6 +48,13 @@ public class BudgetController {
                     "nagu findTransactions teenus, lisandunud on ka uus transaction")
     public List<TransactionInfo> addNewTransaction(@RequestBody TransactionInfo request) {
         return budgetService.addNewTransaction(request);
+    }
+
+
+    @GetMapping("/account/all")
+    @Operation(summary = "Kõikide kontode listi kuvamine")
+    public List<AccountInfo> findAccounts(Integer userId) {
+        return budgetService.findAccounts(userId);
     }
 
 }

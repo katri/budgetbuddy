@@ -16,7 +16,7 @@ public class SetupController {
     @Operation(summary = "Ühe kasutaja tulukategooriate ja subkategooriate kuvamine",
             description = "Võetakse sisse kasutaja info, leitakse üles kasutaja kõik tulukategooriad (type i), " +
                     "seejärel leitakse CategoryMapperi abil subkategooriad ja tagastatakse kogu info SetupResponse sõnumis")
-    public SetupResponse getIncomeCategoriesSetup(Integer userId) {
+    public BudgetInfo getIncomeCategoriesSetup(Integer userId) {
         return setupService.getIncomeCategoriesSetup(userId);
     }
 
@@ -24,7 +24,7 @@ public class SetupController {
     @Operation(summary = "Ühe kasutaja kulukategooriate ja subkategooriate kuvamine",
             description = "Võetakse sisse kasutaja info, leitakse üles kasutaja kõik kulukategooriad (type o), " +
                     "seejärel leitakse CategoryMapperi abil subkategooriad ja tagastatakse kogu info SetupResponse sõnumis")
-    public SetupResponse getExpenseCategoriesSetup(Integer userId) {
+    public BudgetInfo getExpenseCategoriesSetup(Integer userId) {
         return setupService.getExpenseCategoriesSetup(userId);
     }
 
