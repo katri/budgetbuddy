@@ -10,6 +10,7 @@ import java.util.List;
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface TransactionMapper {
 
+    @Mapping(source = "id", target = "transactionId")
     @Mapping(source = "user.id", target = "userId")
     @Mapping(source = "senderAccount.id", target = "senderAccountId")
     @Mapping(source = "receiverAccount.id", target = "receiverAccountId")

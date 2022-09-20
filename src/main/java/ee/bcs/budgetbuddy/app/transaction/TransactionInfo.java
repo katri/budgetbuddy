@@ -7,6 +7,7 @@ import java.time.LocalDate;
 
 @Data
 public class TransactionInfo implements Serializable {
+    private Integer transactionId;
     private Integer userId;
     private Integer senderAccountId;
     private Integer receiverAccountId;
