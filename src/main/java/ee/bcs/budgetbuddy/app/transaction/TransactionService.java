@@ -1,5 +1,6 @@
 package ee.bcs.budgetbuddy.app.transaction;
 
+import ee.bcs.budgetbuddy.domain.account.Account;
 import ee.bcs.budgetbuddy.domain.account.AccountService;
 import ee.bcs.budgetbuddy.domain.subcategory.SubcategoryService;
 import ee.bcs.budgetbuddy.domain.user.UserService;
@@ -65,5 +66,12 @@ public class TransactionService {
         if (senderAccountExists) {
             accountService.updateAccountBalance(transaction.getReceiverAccount().getId(), -1 * transaction.getAmount());
         }
+    }
+
+    public void updateTransactionStatus(Integer transactionId, Boolean isActive) {
+        Transaction transaction = transactionRepository.getReferenceById(transactionId);
+        transaction.setIsActive(isActive);
+        transactionRepository.save(transaction);
+
     }
 }

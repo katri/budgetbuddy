@@ -40,4 +40,8 @@ public class BudgetService {
     public List<AccountInfo> findAccounts(Integer userId) {
         return accountService.findAllAccountsBy(userId);
     }
+
+    public void updateTransactionStatus(Integer transactionId, Boolean isActive) {
+        transactionService.updateTransactionStatus(transactionId, isActive);
+    }
 }
