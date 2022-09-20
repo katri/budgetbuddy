@@ -10,10 +10,13 @@ import java.util.List;
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface TransactionMapper {
 
+    @Mapping(source = "id", target = "transactionId")
     @Mapping(source = "user.id", target = "userId")
     @Mapping(source = "senderAccount.id", target = "senderAccountId")
+    @Mapping(source = "senderAccount.name", target = "senderAccountName")
     @Mapping(source = "receiverAccount.id", target = "receiverAccountId")
     @Mapping(source = "subcategory.id", target = "subcategoryId")
+    @Mapping(source = "subcategory.name", target = "subcategoryName")
     TransactionInfo transactionToTransactionInfo(Transaction transaction);
 
     List<TransactionInfo> transactionsToTransactionInfos(List<Transaction> transactions);

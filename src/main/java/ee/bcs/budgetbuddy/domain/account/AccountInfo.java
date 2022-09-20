@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 @Data
 public class AccountInfo implements Serializable {
-    private Integer id;
+    private Integer accountId;
     private String accountName;
     private Float balance;
     private Boolean isActive;

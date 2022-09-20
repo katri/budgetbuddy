@@ -1,5 +1,6 @@
 package ee.bcs.budgetbuddy.domain.account;
 
+import ee.bcs.budgetbuddy.app.transaction.Transaction;
 import ee.bcs.budgetbuddy.domain.category.Category;
 import org.springframework.stereotype.Service;
 
@@ -47,6 +48,26 @@ public class AccountService {
         return accountRepository.getReferenceById(accountId);
     }
 
+    public void updateAccountBalancesForDelete(Transaction transaction) {
+        Float transactionAmount = transaction.getAmount();
 
+        Account senderAccount = accountRepository.getReferenceById(transaction.getSenderAccount().getId());
+        senderAccount.setBalance(senderAccount.getBalance() + transactionAmount);
+        accountRepository.save(senderAccount);
+
+        Boolean receiverAccountExists;
+        if (transaction.getReceiverAccount() == null) {
+            receiverAccountExists = false;
+        } else {
+            receiverAccountExists = true;
+        }
+
+        if (receiverAccountExists) {
+            Account receiverAccount = accountRepository.getReferenceById(transaction.getReceiverAccount().getId());
+            receiverAccount.setBalance(receiverAccount.getBalance() - transactionAmount);
+            accountRepository.save(receiverAccount);
+        }
+
+    }
 }
 

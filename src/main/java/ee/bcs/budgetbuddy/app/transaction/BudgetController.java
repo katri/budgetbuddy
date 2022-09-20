@@ -29,6 +29,7 @@ public class BudgetController {
     public void updateAccountName(Integer accountId, String accountName) {
         budgetService.updateAccountName(accountId, accountName);
     }
+
     @PatchMapping("/account/status")
     @Operation(summary = "Konto staatuse muutmine",
             description = "Muudab andmebaasis konto isActive staatuse false-ks")
@@ -50,11 +51,15 @@ public class BudgetController {
         return budgetService.addNewTransaction(request);
     }
 
-
     @GetMapping("/account/all")
     @Operation(summary = "Kõikide kontode listi kuvamine")
     public List<AccountInfo> findAccounts(Integer userId) {
         return budgetService.findAccounts(userId);
     }
 
+    @PatchMapping("/transaction/status")
+    @Operation(summary = "Ühe kande kustutamine (transaction isActive staatuse muutmine)")
+    public void updateTransactionStatus(Integer transactionId, Boolean isActive) {
+         budgetService.updateTransactionStatus(transactionId, isActive);
+    }
 }

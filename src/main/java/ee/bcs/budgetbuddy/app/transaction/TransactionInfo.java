@@ -7,11 +7,14 @@ import java.time.LocalDate;
 
 @Data
 public class TransactionInfo implements Serializable {
+    private Integer transactionId;
     private Integer userId;
     private Integer senderAccountId;
+    private String senderAccountName;
     private Integer receiverAccountId;
     private LocalDate date;
     private Integer subcategoryId;
+    private String subcategoryName;
     private String description;
     private Float amount;
     private String type;
