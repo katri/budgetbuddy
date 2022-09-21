@@ -1,5 +1,9 @@
 package ee.bcs.budgetbuddy.app.transaction;
 
+import ee.bcs.budgetbuddy.app.report.Budgeted;
+import ee.bcs.budgetbuddy.app.report.BudgetedService;
+import ee.bcs.budgetbuddy.app.report.PlanningInfo;
+import ee.bcs.budgetbuddy.app.report.PlanningRequest;
 import ee.bcs.budgetbuddy.domain.account.AccountInfo;
 import ee.bcs.budgetbuddy.domain.account.AccountRequest;
 import ee.bcs.budgetbuddy.domain.account.AccountService;
@@ -16,6 +20,9 @@ public class BudgetService {
 
     @Resource
     private AccountService accountService;
+
+    @Resource
+    private BudgetedService budgetedService;
 
     public List<TransactionInfo> findTransactions(Integer accountId) {
         return transactionService.findTransactions(accountId);
@@ -43,5 +50,14 @@ public class BudgetService {
 
     public void updateTransactionStatus(Integer transactionId, Boolean isActive) {
         transactionService.updateTransactionStatus(transactionId, isActive);
+    }
+
+    public List<PlanningInfo> displayBudgetedSumsForMonth(PlanningRequest request) {
+        return budgetedService.displayBudgetedSumsForMonth(request);
+    }
+
+    public void saveBudgetedSumsForMonth(List<PlanningInfo> planningRequest) {
+        budgetedService.saveBudgetedSumsForMonth(planningRequest);
+
     }
 }
