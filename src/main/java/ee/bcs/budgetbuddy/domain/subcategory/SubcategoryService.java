@@ -1,5 +1,6 @@
 package ee.bcs.budgetbuddy.domain.subcategory;
 
+import ee.bcs.budgetbuddy.app.setup.SubcategoryInfo;
 import ee.bcs.budgetbuddy.domain.category.Category;
 import ee.bcs.budgetbuddy.domain.category.CategoryRelation;
 import ee.bcs.budgetbuddy.domain.category.CategoryRelationService;
@@ -68,4 +69,5 @@ public class SubcategoryService {
     public Subcategory findById(Integer subcategoryId) {
         return subcategoryRepository.getReferenceById(subcategoryId);
     }
+
 }
