@@ -1,5 +1,6 @@
 package ee.bcs.budgetbuddy.domain.category;
 
+import ee.bcs.budgetbuddy.app.setup.SubcategoryInfo;
 import ee.bcs.budgetbuddy.domain.standardCategory.StandardCategoryRelation;
 import ee.bcs.budgetbuddy.domain.standardCategory.StandardCategoryRelationService;
 import ee.bcs.budgetbuddy.domain.subcategory.Subcategory;
@@ -12,12 +13,15 @@ import java.util.List;
 @Service
 public class CategoryRelationService {
 
-    @Resource
-    private CategoryRelationRepository categoryRelationRepository;
 
     @Resource
     private StandardCategoryRelationService standardCategoryRelationService;
 
+    @Resource
+    private CategoryRelationRepository categoryRelationRepository;
+
+    @Resource
+    private CategoryRelationsMapper categoryRelationsMapper;
 
     public void createAndSaveCategoryRelations(List<Category> categories, List<Subcategory> subcategories) {
         List<CategoryRelation> categoryRelations = createCategoryRelations(categories, subcategories);
@@ -101,8 +105,11 @@ public class CategoryRelationService {
         categoryRelation.setIsActive(isActive);
         categoryRelationRepository.save(categoryRelation);
 
+    }
 
-
+    public List<SubcategoryInfo> findSubcategories(Integer userId) {
+        List<CategoryRelation> subcategories = categoryRelationRepository.findSubcategories(userId);
+        return categoryRelationsMapper.categoryRelationsToSubcategoryInfos(subcategories);
     }
 }
 

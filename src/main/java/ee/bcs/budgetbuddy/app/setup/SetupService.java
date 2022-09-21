@@ -6,6 +6,7 @@ import ee.bcs.budgetbuddy.domain.subcategory.SubcategoryService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class SetupService {
@@ -53,5 +54,10 @@ public class SetupService {
 
     public void updateCategoryName(Integer categoryId, String categoryName) {
         categoryService.updateCategoryName(categoryId, categoryName);
+    }
+
+    public List<SubcategoryInfo> findSubcategories(Integer userId) {
+        return categoryRelationService.findSubcategories(userId);
+
     }
 }

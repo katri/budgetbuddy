@@ -76,4 +76,5 @@ public class BudgetController {
     public void saveBudgetedSumsForMonth(@RequestBody List<PlanningInfo> planningInfos) {
         budgetService.saveBudgetedSumsForMonth(planningInfos);
     }
+
 }

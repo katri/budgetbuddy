@@ -1,9 +1,11 @@
 package ee.bcs.budgetbuddy.app.setup;
 
+import ee.bcs.budgetbuddy.domain.account.AccountInfo;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @RestController
 @RequestMapping("/setup")
@@ -75,6 +77,12 @@ public class SetupController {
             description = "Muudab andmebaasis kategooria isActive staatuse false-ks")
     public void updateSubcategoryIsActiveStatus(Integer subcategoryId, Boolean isActive) {
         setupService.updateSubcategoryIsActiveStatus(subcategoryId, isActive);
+    }
+
+    @GetMapping("/subcategories/all")
+    @Operation(summary = "Kõikide alamkategooria listi kuvamine")
+    public List<SubcategoryInfo> findSubcategories(Integer userId) {
+        return setupService.findSubcategories(userId);
     }
 }
 

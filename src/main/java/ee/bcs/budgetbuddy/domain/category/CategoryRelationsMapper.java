@@ -19,6 +19,7 @@ public interface CategoryRelationsMapper {
 
     List<SubcategoryInfo> categoryRelationsToSubcategoryInfos(List<CategoryRelation> categoryRelations);
 
+
 //    @Mapping(target = "category.id", source = "categoryId")
 //    CategoryRelation categoryChangeRequestToCategory(CategoryChangeRequest request);
 //
