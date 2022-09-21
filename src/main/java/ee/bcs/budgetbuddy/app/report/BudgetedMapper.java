@@ -17,4 +17,12 @@ public interface BudgetedMapper {
     PlanningInfo budgetedSumToPlanningInfo(Budgeted budgetedSum);
 
     List<PlanningInfo> budgetedSumsToPlanningInfos(List<Budgeted> budgetedSums);
+
+    @Mapping(source = "month", target = "month.id")
+    @Mapping(source = "userId", target = "user.id")
+    @Mapping(source = "subcategoryId", target = "subcategory.id")
+    Budgeted planningInfoToBudgetedSum(PlanningInfo planningInfo);
+
+    List<Budgeted> planningInfosToBudgetedSums(List<PlanningInfo> planningRequest);
+
 }

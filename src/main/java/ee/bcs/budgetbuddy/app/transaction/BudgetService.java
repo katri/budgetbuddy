@@ -1,5 +1,6 @@
 package ee.bcs.budgetbuddy.app.transaction;
 
+import ee.bcs.budgetbuddy.app.report.Budgeted;
 import ee.bcs.budgetbuddy.app.report.BudgetedService;
 import ee.bcs.budgetbuddy.app.report.PlanningInfo;
 import ee.bcs.budgetbuddy.app.report.PlanningRequest;
@@ -53,5 +54,10 @@ public class BudgetService {
 
     public List<PlanningInfo> displayBudgetedSumsForMonth(PlanningRequest request) {
         return budgetedService.displayBudgetedSumsForMonth(request);
+    }
+
+    public void saveBudgetedSumsForMonth(List<PlanningInfo> planningRequest) {
+        budgetedService.saveBudgetedSumsForMonth(planningRequest);
+
     }
 }

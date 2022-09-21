@@ -70,4 +70,10 @@ public class BudgetController {
     public List<PlanningInfo> displayBudgetedSumsForMonth(@RequestBody PlanningRequest request) {
         return budgetService.displayBudgetedSumsForMonth(request);
     }
+
+    @PostMapping("/planning/month/update")
+    @Operation(summary = "Kuu eelarvestatud summade salvestamine")
+    public void saveBudgetedSumsForMonth(@RequestBody List<PlanningInfo> planningRequest) {
+        budgetService.saveBudgetedSumsForMonth(planningRequest);
+    }
 }

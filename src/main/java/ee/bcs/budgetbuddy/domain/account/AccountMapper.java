@@ -16,6 +16,7 @@ public interface AccountMapper {
     Account accountInfoToAccount(AccountInfo accountInfo);
 
     @Mapping(target = "accountName", source = "name")
+    @Mapping(target = "accountId", source = "id")
     AccountInfo accountToAccountInfo(Account account);
 
    List<AccountInfo> accountsToAccountInfos(List<Account> accounts);
