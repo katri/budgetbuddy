@@ -111,5 +111,9 @@ public class CategoryRelationService {
         List<CategoryRelation> subcategories = categoryRelationRepository.findSubcategories(userId);
         return categoryRelationsMapper.categoryRelationsToSubcategoryInfos(subcategories);
     }
+
+    public List<CategoryRelation> findAllRelationsForUser(Integer userId) {
+        return categoryRelationRepository.findAllActiveRelationsForUser(userId);
+    }
 }
 

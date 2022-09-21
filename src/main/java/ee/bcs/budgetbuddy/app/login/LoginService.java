@@ -1,7 +1,5 @@
 package ee.bcs.budgetbuddy.app.login;
 
-import com.sun.xml.bind.v2.TODO;
-import ee.bcs.budgetbuddy.domain.account.Account;
 import ee.bcs.budgetbuddy.domain.account.AccountInfo;
 import ee.bcs.budgetbuddy.domain.account.AccountService;
 import ee.bcs.budgetbuddy.domain.category.Category;
