@@ -77,4 +77,11 @@ public class BudgetController {
         budgetService.saveBudgetedSumsForMonth(planningInfos);
     }
 
+    @PostMapping("/planning/month/now")
+    @Operation(summary = "Kuu eelarvestatud loomine 0-väärtustega")
+    public void fillNewMonthBudgetedDataWithZeros(Integer userId, Integer year, Integer month) {
+        budgetService.fillNewMonthBudgetedDataWithZeros(userId, year, month);
+    }
+
+
 }

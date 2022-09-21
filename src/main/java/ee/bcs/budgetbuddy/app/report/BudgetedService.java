@@ -1,6 +1,8 @@
 package ee.bcs.budgetbuddy.app.report;
 
-import ee.bcs.budgetbuddy.domain.subcategory.SubcategoryService;
+import ee.bcs.budgetbuddy.domain.category.CategoryRelation;
+import ee.bcs.budgetbuddy.domain.category.CategoryRelationService;
+import ee.bcs.budgetbuddy.domain.category.CategoryService;
 import ee.bcs.budgetbuddy.domain.user.UserService;
 import ee.bcs.budgetbuddy.domain.user.month.MonthService;
 import org.springframework.stereotype.Service;
@@ -8,17 +10,23 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;
 
+
 @Service
 public class BudgetedService {
 
     @Resource
-    private MonthService monthService;
+    private CategoryService categoryService;
 
     @Resource
     private UserService userService;
 
     @Resource
-    private SubcategoryService subcategoryService;
+    private MonthService monthService;
+
+
+    @Resource
+    private CategoryRelationService categoryRelationService;
+
 
     @Resource
     private BudgetedMapper budgetedMapper;
@@ -49,5 +57,19 @@ public class BudgetedService {
         return budgetedMapper.budgetedSumsToPlanningInfos(budgetedSums);
     }
 
+    public void fillNewMonthBudgetedDataWithZeros(Integer userId, Integer year, Integer month) {
+        List<CategoryRelation> categoryRelations = categoryRelationService.findAllRelationsForUser(userId);
+        List<Budgeted> budgetedSums = budgetedMapper.categoryRelationsToBudgetedSums(categoryRelations);
+        Integer count =0;
+        for (Budgeted budgetedSum : budgetedSums) {
+            CategoryRelation categoryRelation = categoryRelations.get(count);
+            budgetedSum.setMonth(monthService.findById(month));
+            budgetedSum.setYear(year);
+            budgetedSum.setUser(userService.findById(userId));
+            budgetedSum.setSubcategory(categoryRelation.getSubcategory());
+            count ++;
+        }
+        budgetedRepository.saveAll(budgetedSums);
+    }
 }
 

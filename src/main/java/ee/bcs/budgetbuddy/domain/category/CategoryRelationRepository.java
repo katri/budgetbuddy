@@ -1,6 +1,5 @@
 package ee.bcs.budgetbuddy.domain.category;
 
-import ee.bcs.budgetbuddy.app.setup.SubcategoryInfo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -23,7 +22,8 @@ public interface CategoryRelationRepository extends JpaRepository<CategoryRelati
     List<CategoryRelation> findSubcategories(Integer id);
 
 
-
+    @Query("select c from CategoryRelation c where c.isActive = true and c.category.user.id = ?1")
+    List<CategoryRelation> findAllActiveRelationsForUser(Integer userId);
 
 
 }

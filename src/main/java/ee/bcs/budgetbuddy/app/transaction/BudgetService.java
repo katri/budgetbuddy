@@ -60,4 +60,8 @@ public class BudgetService {
     public List<PlanningInfo> displayBudgetedSumsForMonth(Integer userId, Integer year, Integer month) {
         return budgetedService.displayBudgetedSumsForMonth(userId, year, month);
     }
+
+    public void fillNewMonthBudgetedDataWithZeros(Integer userId, Integer year, Integer month) {
+        budgetedService.fillNewMonthBudgetedDataWithZeros(userId, year, month);
+    }
 }
