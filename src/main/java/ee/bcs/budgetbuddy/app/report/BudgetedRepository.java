@@ -16,4 +16,7 @@ public interface BudgetedRepository extends JpaRepository<Budgeted, Integer> {
     List<Budgeted> displayBudgetedSumsBy(Integer year, Integer month, Integer userId);
 
 
+      @Query("select b from Budgeted b where b.user.id = ?1")
+    List<Budgeted> findBudgetedSumsBy(Integer userId);
+
 }

@@ -15,7 +15,6 @@ public class UserService {
     @Resource
     private UserRepository userRepository;
 
-
     public User addUser(UserRequest request) {
         boolean userExists = userRepository.existsByUsername(request.getUsername());
         ValidationService.validateUserExists(userExists, request.getUsername());

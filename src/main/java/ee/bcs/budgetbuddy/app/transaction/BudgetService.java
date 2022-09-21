@@ -53,11 +53,12 @@ public class BudgetService {
     }
 
     public List<PlanningInfo> displayBudgetedSumsForMonth(PlanningRequest request) {
+        System.out.println();
         return budgetedService.displayBudgetedSumsForMonth(request);
     }
 
-    public void saveBudgetedSumsForMonth(List<PlanningInfo> planningRequest) {
-        budgetedService.saveBudgetedSumsForMonth(planningRequest);
+    public void saveBudgetedSumsForMonth(List<PlanningInfo> planningInfos) {
+        budgetedService.saveBudgetedSumsForMonth(planningInfos);
 
     }
 }
