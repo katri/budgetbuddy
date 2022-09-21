@@ -52,13 +52,12 @@ public class BudgetService {
         transactionService.updateTransactionStatus(transactionId, isActive);
     }
 
-    public List<PlanningInfo> displayBudgetedSumsForMonth(PlanningRequest request) {
-        System.out.println();
-        return budgetedService.displayBudgetedSumsForMonth(request);
-    }
-
     public void saveBudgetedSumsForMonth(List<PlanningInfo> planningInfos) {
         budgetedService.saveBudgetedSumsForMonth(planningInfos);
 
+    }
+
+    public List<PlanningInfo> displayBudgetedSumsForMonth(Integer userId, Integer year, Integer month) {
+        return budgetedService.displayBudgetedSumsForMonth(userId, year, month);
     }
 }
