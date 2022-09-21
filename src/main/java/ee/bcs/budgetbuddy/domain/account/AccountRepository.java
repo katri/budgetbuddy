@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface AccountRepository extends JpaRepository<Account, Integer> {
 
-    @Query("select a from Account a where a.user.id = ?1")
+    @Query("select a from Account a where a.user.id = ?1 and a.isActive = true")
     List<Account> findAllAccountsBy(Integer id);
 }
