@@ -30,23 +30,24 @@ public class BudgetedService {
         return budgetedRepository.findBudgetedSumBy(year, month, subcategoryId).getAmount();
     }
 
-    public List<PlanningInfo> displayBudgetedSumsForMonth(PlanningRequest request) {
-        List<Budgeted> budgetedSums = budgetedRepository.displayBudgetedSumsBy(request.getYear(), request.getMonth(), request.getUserId());
-        return budgetedMapper.budgetedSumsToPlanningInfos(budgetedSums);
-    }
 
     public void saveBudgetedSumsForMonth(List<PlanningInfo> planningInfos) {
         Integer userId = planningInfos.get(0).getUserId();
         List<Budgeted> budgetedSums = budgetedRepository.findBudgetedSumsBy(userId);
-                budgetedMapper.planningInfosToBudgetedSums(planningInfos);
+        budgetedMapper.planningInfosToBudgetedSums(planningInfos);
+        Integer count = 0;
         for (Budgeted budgetedSum : budgetedSums) {
-            Integer count = 0;
             PlanningInfo planningInfo = planningInfos.get(count);
-            budgetedSum.setMonth(monthService.findById(planningInfo.getMonth()));
-            budgetedSum.setUser(userService.findById(planningInfo.getUserId()));
-            budgetedSum.setSubcategory(subcategoryService.findById(planningInfo.getSubcategoryId()));
+            budgetedSum.setAmount(planningInfo.getAmount());
             count++;
         }
         budgetedRepository.saveAll(budgetedSums);
     }
+
+    public List<PlanningInfo> displayBudgetedSumsForMonth(Integer userId, Integer year, Integer month) {
+        List<Budgeted> budgetedSums = budgetedRepository.displayBudgetedSumsBy(userId, year, month);
+        return budgetedMapper.budgetedSumsToPlanningInfos(budgetedSums);
+    }
+
 }
+

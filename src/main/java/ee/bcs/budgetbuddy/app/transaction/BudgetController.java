@@ -67,8 +67,8 @@ public class BudgetController {
 
     @GetMapping("/planning/month/all")
     @Operation(summary = "Kuu eelarvestatud summade toomine andmebaasist")
-    public List<PlanningInfo> displayBudgetedSumsForMonth(@RequestBody PlanningRequest request) {
-        return budgetService.displayBudgetedSumsForMonth(request);
+    public List<PlanningInfo> displayBudgetedSumsForMonth(Integer userId, Integer year, Integer month) {
+        return budgetService.displayBudgetedSumsForMonth(userId, year,month);
     }
 
     @PatchMapping("/planning/month/update")
