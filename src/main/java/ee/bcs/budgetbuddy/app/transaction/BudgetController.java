@@ -1,5 +1,7 @@
 package ee.bcs.budgetbuddy.app.transaction;
 
+import ee.bcs.budgetbuddy.app.report.PlanningInfo;
+import ee.bcs.budgetbuddy.app.report.PlanningRequest;
 import ee.bcs.budgetbuddy.domain.account.AccountInfo;
 import ee.bcs.budgetbuddy.domain.account.AccountRequest;
 import io.swagger.v3.oas.annotations.Operation;
@@ -61,5 +63,11 @@ public class BudgetController {
     @Operation(summary = "Ühe kande kustutamine (transaction isActive staatuse muutmine)")
     public void updateTransactionStatus(Integer transactionId, Boolean isActive) {
          budgetService.updateTransactionStatus(transactionId, isActive);
+    }
+
+    @GetMapping("/planning/month/all")
+    @Operation(summary = "Kuu eelarvestatud summade toomine andmebaasist")
+    public List<PlanningInfo> displayBudgetedSumsForMonth(@RequestBody PlanningRequest request) {
+        return budgetService.displayBudgetedSumsForMonth(request);
     }
 }

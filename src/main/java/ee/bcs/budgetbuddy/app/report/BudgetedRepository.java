@@ -1,6 +1,5 @@
 package ee.bcs.budgetbuddy.app.report;
 
-import ee.bcs.budgetbuddy.domain.Budgeted;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -11,6 +10,10 @@ public interface BudgetedRepository extends JpaRepository<Budgeted, Integer> {
 
     @Query("select b from Budgeted b where b.year = ?1 and b.month.id = ?2 and b.subcategory.id = ?3")
     Budgeted findBudgetedSumBy(Integer year, Integer month, Integer subcategoryId);
+
+
+    @Query("select b from Budgeted b where b.year = ?1 and b.month.id = ?2 and b.user.id = ?3 and b.isActive = true")
+    List<Budgeted> displayBudgetedSumsBy(Integer year, Integer month, Integer userId);
 
 
 }

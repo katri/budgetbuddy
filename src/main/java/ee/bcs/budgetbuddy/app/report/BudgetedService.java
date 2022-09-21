@@ -1,17 +1,25 @@
 package ee.bcs.budgetbuddy.app.report;
 
-import ee.bcs.budgetbuddy.domain.Budgeted;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class BudgetedService {
+
+    @Resource
+    private BudgetedMapper budgetedMapper;
 
     @Resource
     private BudgetedRepository budgetedRepository;
 
     public Float findBudgetedSumInMonth(Integer year, Integer month, Integer subcategoryId) {
        return budgetedRepository.findBudgetedSumBy(year, month, subcategoryId).getAmount();
+    }
+
+    public List<PlanningInfo> displayBudgetedSumsForMonth(PlanningRequest request) {
+        List<Budgeted> budgetedSums = budgetedRepository.displayBudgetedSumsBy(request.getYear(), request.getMonth(), request.getUserId());
+        return budgetedMapper.budgetedSumsToPlanningInfos(budgetedSums);
     }
 }

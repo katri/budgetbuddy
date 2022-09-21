@@ -1,5 +1,6 @@
-package ee.bcs.budgetbuddy.domain;
+package ee.bcs.budgetbuddy.app.report;
 
+import ee.bcs.budgetbuddy.domain.Month;
 import ee.bcs.budgetbuddy.domain.subcategory.Subcategory;
 import ee.bcs.budgetbuddy.domain.user.User;
 import lombok.Data;
