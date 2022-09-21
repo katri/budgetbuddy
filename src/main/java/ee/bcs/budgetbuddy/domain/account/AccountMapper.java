@@ -11,7 +11,8 @@ public interface AccountMapper {
 
     @Mapping(target = "user.id", source = "userId")
     @Mapping(target = "accountType.id", source = "accountTypeId")
-    Account accountRequestToAccount(AccountRequest accountRequest);
+    @Mapping(constant = "true", target = "isActive")
+     Account accountRequestToAccount(AccountRequest accountRequest);
 
     Account accountInfoToAccount(AccountInfo accountInfo);
 
@@ -19,5 +20,5 @@ public interface AccountMapper {
     @Mapping(target = "accountId", source = "id")
     AccountInfo accountToAccountInfo(Account account);
 
-   List<AccountInfo> accountsToAccountInfos(List<Account> accounts);
+    List<AccountInfo> accountsToAccountInfos(List<Account> accounts);
 }
