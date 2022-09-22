@@ -10,6 +10,7 @@ public class SubcategoryInfo implements Serializable {
     private Integer subcategoryId;
     private String subcategoryName;
     private Float subcategoryBudgetedSum;
+    private Integer subcategoryBudgetedSumId;
     private Float subcategorySum;
     private Boolean isActive;
 

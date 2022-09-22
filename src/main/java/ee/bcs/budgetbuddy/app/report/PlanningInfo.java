@@ -7,11 +7,6 @@ import java.io.Serializable;
 
 @Data
 public class PlanningInfo implements Serializable {
-    private Integer userId;
-    private Integer year;
-    private Integer month;
+    private Integer subcategoryBudgetedId;
     private Float amount;
-    private Integer subcategoryId;
-    private String subcategoryName;
-    private Boolean isActive;
 }

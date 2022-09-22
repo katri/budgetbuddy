@@ -23,10 +23,8 @@ public class BudgetedService {
     @Resource
     private MonthService monthService;
 
-
     @Resource
     private CategoryRelationService categoryRelationService;
-
 
     @Resource
     private BudgetedMapper budgetedMapper;
@@ -34,22 +32,16 @@ public class BudgetedService {
     @Resource
     private BudgetedRepository budgetedRepository;
 
-    public Float findBudgetedSumInMonth(Integer year, Integer month, Integer subcategoryId) {
-        return budgetedRepository.findBudgetedSumBy(year, month, subcategoryId).getAmount();
+    public Budgeted findBudgetedSumInMonth(Integer year, Integer month, Integer subcategoryId) {
+        return budgetedRepository.findBudgetedSumBy(year, month, subcategoryId);
     }
 
-
     public void saveBudgetedSumsForMonth(List<PlanningInfo> planningInfos) {
-        Integer userId = planningInfos.get(0).getUserId();
-        List<Budgeted> budgetedSums = budgetedRepository.findBudgetedSumsBy(userId);
-        budgetedMapper.planningInfosToBudgetedSums(planningInfos);
-        Integer count = 0;
-        for (Budgeted budgetedSum : budgetedSums) {
-            PlanningInfo planningInfo = planningInfos.get(count);
-            budgetedSum.setAmount(planningInfo.getAmount());
-            count++;
+        for (PlanningInfo planningInfo : planningInfos) {
+            Budgeted budgeted = budgetedRepository.findById(planningInfo.getSubcategoryBudgetedId()).get();
+            budgeted.setAmount(planningInfo.getAmount());
+            budgetedRepository.save(budgeted);
         }
-        budgetedRepository.saveAll(budgetedSums);
     }
 
     public List<PlanningInfo> displayBudgetedSumsForMonth(Integer userId, Integer year, Integer month) {
@@ -59,6 +51,21 @@ public class BudgetedService {
 
     public void fillNewMonthBudgetedDataWithZeros(Integer userId, Integer year, Integer month) {
         List<CategoryRelation> categoryRelations = categoryRelationService.findAllRelationsForUser(userId);
+        //// TODO: 22.09.2022 teha validation teenus, et kontrolliks, kas kuu eelarve on juba olemas või mitte
+      // boolean monthlyBudgetDataExists = budgetedRepository.existsBy(userId, year, month);
+      //  ValidationService.validateMonthlyBudgetedDataExists
+
+
+
+//        boolean userExists = userRepository.existsByUsername(request.getUsername());
+//        ValidationService.validateUserExists(userExists, request.getUsername());
+//        User user = userMapper.userRequestToUser(request);
+//        userRepository.save(user);
+//        return user;
+//
+
+
+
         List<Budgeted> budgetedSums = budgetedMapper.categoryRelationsToBudgetedSums(categoryRelations);
         Integer count =0;
         for (Budgeted budgetedSum : budgetedSums) {

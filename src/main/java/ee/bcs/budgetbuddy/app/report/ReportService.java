@@ -63,8 +63,10 @@ public class ReportService {
                 categorySum = categorySum + subcategorySum;
                 totalSubcategorySum = totalSubcategorySum + subcategorySum;
 
-                Float budgetedSum = budgetedService.findBudgetedSumInMonth(year, month, subcategory.getSubcategoryId());
+                Budgeted budgeted = budgetedService.findBudgetedSumInMonth(year, month, subcategory.getSubcategoryId());
+                Float budgetedSum = budgeted.getAmount();
                 subcategory.setSubcategoryBudgetedSum(budgetedSum);
+                subcategory.setSubcategoryBudgetedSumId(budgeted.getId());
                 categoryBudgetedSum = categoryBudgetedSum + budgetedSum;
                 totalBudgetedSum = totalBudgetedSum + budgetedSum;
             }

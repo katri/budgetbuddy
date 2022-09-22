@@ -1,9 +1,7 @@
 package ee.bcs.budgetbuddy.app.transaction;
 
-import ee.bcs.budgetbuddy.app.report.Budgeted;
 import ee.bcs.budgetbuddy.app.report.BudgetedService;
 import ee.bcs.budgetbuddy.app.report.PlanningInfo;
-import ee.bcs.budgetbuddy.app.report.PlanningRequest;
 import ee.bcs.budgetbuddy.domain.account.AccountInfo;
 import ee.bcs.budgetbuddy.domain.account.AccountRequest;
 import ee.bcs.budgetbuddy.domain.account.AccountService;

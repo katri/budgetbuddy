@@ -19,4 +19,8 @@ public interface BudgetedRepository extends JpaRepository<Budgeted, Integer> {
       @Query("select b from Budgeted b where b.user.id = ?1")
     List<Budgeted> findBudgetedSumsBy(Integer userId);
 
+  //  boolean existsBy(Integer userId, Integer year, Integer month);
+//
+//    @Query("select (count(u) > 0) from User u where upper(u.username) = upper(?1)")
+//    boolean existsByUsername(String username);
 }
