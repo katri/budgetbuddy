@@ -1,6 +1,10 @@
 package ee.bcs.budgetbuddy.app.report;
 
+import ee.bcs.budgetbuddy.app.setup.CategoryInfo;
 import ee.bcs.budgetbuddy.domain.Month;
+import ee.bcs.budgetbuddy.domain.category.CategoryRelation;
+import ee.bcs.budgetbuddy.domain.subcategory.Subcategory;
+import ee.bcs.budgetbuddy.domain.user.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
@@ -24,4 +28,11 @@ public interface BudgetedMapper {
 
     List<Budgeted> planningInfosToBudgetedSums(List<PlanningInfo> planningRequest);
 
+
+
+       @Mapping(target = "id", ignore = true)
+       @Mapping(target = "amount", constant = "0F")
+    Budgeted categoryRelationsToBudgetedSums(CategoryRelation categoryRelation);
+
+    List<Budgeted> categoryRelationsToBudgetedSums(List<CategoryRelation> categoryRelations);
 }

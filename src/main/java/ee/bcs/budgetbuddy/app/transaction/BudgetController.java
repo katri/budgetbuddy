@@ -67,8 +67,8 @@ public class BudgetController {
 
     @GetMapping("/planning/month/all")
     @Operation(summary = "Kuu eelarvestatud summade toomine andmebaasist")
-    public List<PlanningInfo> displayBudgetedSumsForMonth(@RequestBody PlanningRequest request) {
-        return budgetService.displayBudgetedSumsForMonth(request);
+    public List<PlanningInfo> displayBudgetedSumsForMonth(Integer userId, Integer year, Integer month) {
+        return budgetService.displayBudgetedSumsForMonth(userId, year,month);
     }
 
     @PatchMapping("/planning/month/update")
@@ -76,4 +76,12 @@ public class BudgetController {
     public void saveBudgetedSumsForMonth(@RequestBody List<PlanningInfo> planningInfos) {
         budgetService.saveBudgetedSumsForMonth(planningInfos);
     }
+
+    @PostMapping("/planning/month/now")
+    @Operation(summary = "Kuu eelarvestatud loomine 0-väärtustega")
+    public void fillNewMonthBudgetedDataWithZeros(Integer userId, Integer year, Integer month) {
+        budgetService.fillNewMonthBudgetedDataWithZeros(userId, year, month);
+    }
+
+
 }

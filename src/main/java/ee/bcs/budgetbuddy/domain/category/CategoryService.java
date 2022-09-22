@@ -97,7 +97,7 @@ public class CategoryService {
     }
 
 
-    private void addSubcategorytoCategoryInfos(List<CategoryInfo> categoryInfos) {
+    public void addSubcategorytoCategoryInfos(List<CategoryInfo> categoryInfos) {
         for (CategoryInfo categoryInfo : categoryInfos) {
             addSubcategory(categoryInfo);
         }
@@ -105,6 +105,11 @@ public class CategoryService {
 
     private List<CategoryInfo> createCategoryInfos(Integer userId, String type) {
         List<Category> categories = categoryRepository.findCategoriesBy(userId, type);
+        return categoryMapper.categoriesToCategoryInfos(categories);
+    }
+
+    public List<CategoryInfo> createCategoryInfos(Integer userId) {
+        List<Category> categories = categoryRepository.findCategoriesBy(userId);
         return categoryMapper.categoriesToCategoryInfos(categories);
     }
 
@@ -127,4 +132,6 @@ public class CategoryService {
         Category lastCategory = categoryRepository.findFirstByOrderBySequenceDesc();
         return lastCategory.getSequence() + 1;
     }
+
+
 }

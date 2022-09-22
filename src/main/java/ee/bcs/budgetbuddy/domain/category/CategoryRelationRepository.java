@@ -18,4 +18,12 @@ public interface CategoryRelationRepository extends JpaRepository<CategoryRelati
     CategoryRelation findBySubcategory(Integer id);
 
 
+    @Query("select c from CategoryRelation c where c.category.user.id = ?1 and c.isActive = true order by c.category.sequence")
+    List<CategoryRelation> findSubcategories(Integer id);
+
+
+    @Query("select c from CategoryRelation c where c.isActive = true and c.category.user.id = ?1")
+    List<CategoryRelation> findAllActiveRelationsForUser(Integer userId);
+
+
 }
