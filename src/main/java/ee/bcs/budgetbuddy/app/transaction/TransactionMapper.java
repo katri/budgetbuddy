@@ -15,6 +15,7 @@ public interface TransactionMapper {
     @Mapping(source = "senderAccount.id", target = "senderAccountId")
     @Mapping(source = "senderAccount.name", target = "senderAccountName")
     @Mapping(source = "receiverAccount.id", target = "receiverAccountId")
+    @Mapping(source = "receiverAccount.name", target = "receiverAccountName")
     @Mapping(source = "subcategory.id", target = "subcategoryId")
     @Mapping(source = "subcategory.name", target = "subcategoryName")
     TransactionInfo transactionToTransactionInfo(Transaction transaction);

@@ -38,9 +38,12 @@ public class AccountService {
         return accountMapper.accountsToAccountInfos(accounts);
     }
 
-    public void updateAccountBalance(Integer accountId, Float amount) {
+    public void updateAccountBalance(Integer accountId, Float amount, String type) {
         Account account = accountRepository.getReferenceById(accountId);
-        account.setBalance(account.getBalance() - amount);
+        if (type.equals("e")) {
+            account.setBalance(account.getBalance() - amount);
+        } else
+            account.setBalance(account.getBalance() + amount);
         accountRepository.save(account);
     }
 

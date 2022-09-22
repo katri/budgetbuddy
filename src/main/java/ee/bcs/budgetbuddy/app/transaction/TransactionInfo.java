@@ -12,6 +12,7 @@ public class TransactionInfo implements Serializable {
     private Integer senderAccountId;
     private String senderAccountName;
     private Integer receiverAccountId;
+    private String receiverAccountName;
     private LocalDate date;
     private Integer subcategoryId;
     private String subcategoryName;

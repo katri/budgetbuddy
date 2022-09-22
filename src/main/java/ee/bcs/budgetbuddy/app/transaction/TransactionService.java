@@ -62,9 +62,9 @@ public class TransactionService {
 
     @Transactional
     public void updateAccountBalances(Transaction transaction, Boolean senderAccountExists) {
-        accountService.updateAccountBalance(transaction.getSenderAccount().getId(), transaction.getAmount());
+        accountService.updateAccountBalance(transaction.getSenderAccount().getId(), transaction.getAmount(), transaction.getType());
         if (senderAccountExists) {
-            accountService.updateAccountBalance(transaction.getReceiverAccount().getId(), -1 * transaction.getAmount());
+            accountService.updateAccountBalance(transaction.getReceiverAccount().getId(), -1 * transaction.getAmount(), transaction.getType());
         }
     }
 
