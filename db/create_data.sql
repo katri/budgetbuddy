@@ -56,7 +56,7 @@ INSERT INTO standard_subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Mu
 INSERT INTO standard_subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Trenn', 27, 'e');
 INSERT INTO standard_subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Ilukulud', 28, 'e');
 INSERT INTO standard_subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Trennid / hobid', 29, 'e');
-INSERT INTO standard_subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Riided', 30, 'e');
+INSERT INTO standard_subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Lasteriided', 30, 'e');
 INSERT INTO standard_subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Laste meelelahutus', 31, 'e');
 INSERT INTO standard_subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Väljas söömine', 32, 'e');
 INSERT INTO standard_subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Meelelahutus', 33, 'e');
@@ -145,7 +145,7 @@ INSERT INTO subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Mugavusteen
 INSERT INTO subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Trenn', 27, 'e');
 INSERT INTO subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Ilukulud', 28, 'e');
 INSERT INTO subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Trennid / hobid', 29, 'e');
-INSERT INTO subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Riided', 30, 'e');
+INSERT INTO subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Lasteriided', 30, 'e');
 INSERT INTO subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Laste meelelahutus', 31, 'e');
 INSERT INTO subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Väljas söömine', 32, 'e');
 INSERT INTO subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Meelelahutus', 33, 'e');
@@ -222,7 +222,7 @@ INSERT INTO subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Mugavusteen
 INSERT INTO subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Trenn', 27, 'e');
 INSERT INTO subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Ilukulud', 28, 'e');
 INSERT INTO subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Trennid / hobid', 29, 'e');
-INSERT INTO subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Riided', 30, 'e');
+INSERT INTO subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Lasteriided', 30, 'e');
 INSERT INTO subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Laste meelelahutus', 31, 'e');
 INSERT INTO subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Väljas söömine', 32, 'e');
 INSERT INTO subcategory (id, name, sequence, type) VALUES (DEFAULT, 'Meelelahutus', 33, 'e');
