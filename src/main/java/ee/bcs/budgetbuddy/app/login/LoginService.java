@@ -1,5 +1,6 @@
 package ee.bcs.budgetbuddy.app.login;
 
+import ee.bcs.budgetbuddy.app.report.BudgetedService;
 import ee.bcs.budgetbuddy.domain.account.AccountInfo;
 import ee.bcs.budgetbuddy.domain.account.AccountService;
 import ee.bcs.budgetbuddy.domain.category.Category;
@@ -34,6 +35,9 @@ public class LoginService {
     private AccountService accountService;
 
     @Resource
+    private BudgetedService budgetedService;
+
+    @Resource
     private UserMapper userMapper;
 
     @Resource
@@ -43,6 +47,10 @@ public class LoginService {
     public UserResponse registerNewUser(UserRequest request) {
         User user = userService.addUser(request);
         createAndSaveCategoriesFromTemplate(user);
+        // create mock data for new user
+        budgetedService.fillNewMonthBudgetedDataWithZeros(user.getId(), 2022, 8);
+        budgetedService.fillNewMonthBudgetedDataWithZeros(user.getId(), 2022, 9);
+        budgetedService.fillNewMonthBudgetedDataWithZeros(user.getId(), 2022, 10);
         return userMapper.userToUserResponse(user);
     }
 
